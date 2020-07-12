@@ -2,7 +2,7 @@
     text-align: center;
 }
 
-.page-border {
-    border: solid 1px gray;
+.pageBorder {
+    border: solid 1px blueviolet;
     padding: 5%;
 }
