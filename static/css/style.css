@@ -1,1 +1,8 @@
+.btnPosition {
+    text-align: center;
+}
 
+.page-border {
+    border: solid 1px gray;
+    padding: 5%;
+}

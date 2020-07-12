@@ -29,12 +29,14 @@ def home():
     return render_template('home.template.html')
 
 
-@app.route('/show')
-def show_listings():
-    all_listings = client[DB_NAME].restaurants.find().limit(10)
-    return render_template('show.template.html',
-                           all_listings=all_listings
-                           )
+@app.route('/recipe/create')
+def create_recipe():
+    return render_template('create_recipe.template.html')
+
+
+@app.route('/recipe/create', methods=['POST'])
+def process_create_recipe():
+    return "form received"
 
 
 # "magic code" -- boilerplate

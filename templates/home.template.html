@@ -2,44 +2,15 @@
 
 {% block title %}CookBooks{% endblock %}
 
-{% block content %}
-<!--navbar starts-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item">
-        <a class="nav-link" href="#"><img src="static/img/pencil.png" class="img-fluid" alt="Register A Recipe"> Post Yours</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"><img src="static/img/good (1).png" class="img-fluid" alt="Popular Recipes"> Popular Recipes</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"><img src="static/img/category.png" class="img-fluid" alt="Categories"> Categories</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0" method="GET">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search for a recipe" aria-label="Search" name="search-terms">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-<!--navbar ends-->
-
-
-
-
-
-
+{%block content%}
 <!--header starts-->
-    <section class="masthead mt-5">
-        <div class="container-fluid">
-            <div class="headtitle">
-                <p class="h1 text-center"><img src="static/img/logo.png" class="img-fluid px-3" alt="logo"> Welcome to CookBooks!<br></p>
-            </div>
-        </div>
-    </section>
+<section class="masthead mt-5">
+	<div class="container-fluid">
+		<div class="headtitle">
+			<p class="h1 text-center">
+				<img src="static/img/logo.png" class="img-fluid px-3" alt="logo"> Welcome to CookBooks!<br></p>
+		</div>
+	</div>
+</section>
 <!--header ends-->
 {% endblock %}
