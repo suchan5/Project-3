@@ -15,7 +15,7 @@ MONGO_URI = os.environ.get('MONGO_URL')
 client = pymongo.MongoClient(MONGO_URI)
 
 # define my db name
-DB_NAME = ""
+DB_NAME = "sample_restaurants"
 
 # read in the SESSION_KEY variable from the operating system environment
 SESSION_KEY = os.environ.get('SESSION_KEY')
@@ -24,7 +24,17 @@ SESSION_KEY = os.environ.get('SESSION_KEY')
 app.secret_key = SESSION_KEY
 
 
+@app.route('/')
+def home():
+    return render_template('home.template.html')
 
+
+@app.route('/show')
+def show_listings():
+    all_listings = client[DB_NAME].restaurants.find().limit(10)
+    return render_template('show.template.html',
+                           all_listings=all_listings
+                           )
 
 
 # "magic code" -- boilerplate
