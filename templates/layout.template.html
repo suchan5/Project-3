@@ -7,15 +7,15 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-   
-    {%block css%}{%endblock%}
+    <link rel="stylesheet" href="{{ url_for('static', filename ='css/style.css') }}" type="text/css" />
+    
 
     <title>{%block title%}{%endblock%}</title>
   </head>
   <body>
-    <div class="container">  <!--꼭 container주삼. bootstrap이니까 이거 넣어줘야함 ㅋ-->
-        {%block content%}{%endblock%}
-    </div>
+   
+    {%block content%}{%endblock%}
+    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
