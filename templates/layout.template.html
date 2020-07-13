@@ -24,6 +24,10 @@
         </button>
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+					<a class="navbar-brand"
+						href="{{url_for('home')}}"><img src="{{ url_for('static', filename='img/cooking.png') }}" class="img-fluid"> CookBooks</a>
+				</li>
 				<li class="nav-item">
 					<a class="nav-link"
 						href="{{url_for('submit_recipe')}}"><img src="{{ url_for('static', filename='img/pencil.png') }}" class="img-fluid"> Submit a Recipe</a>
@@ -63,11 +67,14 @@
 
 
     <!--footer starts-->
-    <footer class="container-fluid">
+    <footer class="container-fluid py-3">
         <div class="row">
             <div class="col">
-                <div>Copyright <i class="fas fa-copyright"></i> 2020 CookBooks. All Rights Reserved</div>
+                <div class="copyright">Copyright <i class="fas fa-copyright"></i> 2020 CookBooks. All Rights Reserved</div>
             </div>
+            <div class="col text-right">
+            <p><a href="mailto:suchan5@hotmail.com" target="_blank"><i class="fas fa-envelope email"></i></a></p>
+        </div>
         </div>
     </footer>
     <!--footer ends-->
