@@ -1,15 +1,16 @@
 {% extends 'layout.template.html' %}
 
-{% block title %}View Your Receipe{% endblock %}
+{% block title %}{{recipe.title}} Receipe{% endblock %}
 
 {%block content%}
-
-{{recipe.title}}
-<br>
-{{recipe.about}}
-<br>
-{{recipe.ingredients}}
-<br>
-{{recipe.directions}}
-<br>
+<div class="card text-center">
+  <h4 class="card-header">{{recipe.title}}</h4>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0 text-muted">
+      <p>"{{recipe.about}}"</p>
+    </blockquote>
+    <p class="card-text">Ingredients : {{recipe.ingredients}}</p>
+    <p class="card-text">Directions : {{recipe.directions}}</p>
+  </div>
+</div>
 {% endblock %}
