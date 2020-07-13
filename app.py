@@ -49,7 +49,15 @@ def process_submit_recipe():
         "ingredients": ingredients,
         "directions": directions
     })
-    return "form received"
+    return redirect(url_for('show_recipes'))
+
+
+@app.route('/recipes')
+def show_recipes():
+    all_recipes = client[DB_NAME].submittedRecipes.find().limit(10)
+    return render_template('show_recipes.template.html',
+                           all_recipes=all_recipes
+                           )
 
 
 # "magic code" -- boilerplate

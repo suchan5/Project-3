@@ -1,0 +1,14 @@
+{% extends 'layout.template.html' %}
+
+{% block title %}Recipes{% endblock %}
+
+{% block content %}
+{% for a in all_recipes %}
+    <ul>
+        <li>{{a.title}}</li>
+        <li>{{a.about}}</li>
+        <li>{{a.ingredients}}</li>
+        <li>{{a.directions}}</li>
+    </ul>
+{% endfor %}
+{% endblock %}
