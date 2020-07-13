@@ -1,0 +1,15 @@
+{% extends 'layout.template.html' %}
+
+{% block title %}View Your Receipe{% endblock %}
+
+{%block content%}
+
+{{recipe.title}}
+<br>
+{{recipe.about}}
+<br>
+{{recipe.ingredients}}
+<br>
+{{recipe.directions}}
+<br>
+{% endblock %}

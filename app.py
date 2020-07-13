@@ -42,20 +42,31 @@ def process_submit_recipe():
     about_recipe = request.form.get('about-recipe')
     ingredients = request.form.get('ingredients')
     directions = request.form.get('directions')
+    print(recipe_title, about_recipe, ingredients, directions)
 
-    client[DB_NAME].submittedRecipes.insert_one({
+    submission = client[DB_NAME].submittedRecipes.insert_one({
         "title": recipe_title,
         "about": about_recipe,
         "ingredients": ingredients,
         "directions": directions
     })
-    return redirect(url_for('show_recipes'))
+    return redirect(url_for('board_view', recipe_id=submission.inserted_id))
+
+
+@app.route('/view/<recipe_id>')
+def board_view(recipe_id):
+    recipe = client[DB_NAME].submittedRecipes.find_one({
+        "_id": ObjectId(recipe_id)
+    })
+    return render_template('board_view.template.html',
+                           recipe=recipe
+                           )
 
 
 @app.route('/recipes')
-def show_recipes():
+def show_all_recipes():
     all_recipes = client[DB_NAME].submittedRecipes.find().limit(10)
-    return render_template('show_recipes.template.html',
+    return render_template('show_all_recipes.template.html',
                            all_recipes=all_recipes
                            )
 
