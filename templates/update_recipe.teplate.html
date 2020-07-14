@@ -1,33 +1,33 @@
 {% extends 'layout.template.html' %}
 
-{% block title %}Submit a Recipe{% endblock %}
+{% block title %}Edit ｜ {{recipe.title}}{% endblock %}
 
 {% block content %}
 <section class="submission">
 	<div class="container py-5">
 		<div class="submitBox">
 			<form method="POST">
-				<h1 class="mt-5 mb-5 text-center">Submit a recipe to share!</h1>
+				<h1 class="mt-5 mb-5 text-center">Edit ｜ {{recipe.title}}</h1>
 				<div class="pageBorder">
 					<div class="form-group">
 						<label>Recipe Title</label>
-						<input type="text" class="form-control" name="recipe-title" placeholder="E.g. Seafood Chowder"/>
+						<input type="text" class="form-control" name="recipe-title" placeholder="{{recipe.title}}"/>
                     </div>
 					<div class="form-group">
 						<label>About the recipe</label>
-						<textarea class="form-control" name="about-recipe" placeholder="E.g. This recipe is passed down from my grandma!"></textarea>
+						<textarea class="form-control" name="about-recipe" placeholder="{{recipe.about}}"></textarea>
 					</div>
 					<div class="form-group">
 						<label>Ingredients</label>
-						<textarea class="form-control" name="ingredients" placeholder="E.g. ½ pound shrimp"></textarea>
+						<textarea class="form-control" name="ingredients" placeholder="{{recipe.ingredients}}"></textarea>
 					</div>
 					<div class="form-group">
 						<label>Directions</label>
-						<textarea class="form-control" name="directions" placeholder="E.g. 1. Melt butter in a saucepan over medium-low heat."></textarea>
+						<textarea class="form-control" name="directions" placeholder="{{recipe.directions}}"></textarea>
 					</div>
 					<div class="btnPosition">
 						<input type="submit" value="Save" class="btn btn-info mt-5"/>
-						<a class="btn btn-dark mt-5" href="{{ url_for('home') }}">Cancel</a>
+						<a class="btn btn-dark mt-5" href="{{ url_for('board_view', recipe_id=recipe._id) }}">Cancel</a>
 					</div>
 				</div>
 			</form>

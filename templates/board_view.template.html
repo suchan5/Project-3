@@ -13,6 +13,7 @@
 			<p class="card-text">Ingredients : {{recipe.ingredients}}</p>
 			<p class="card-text">Directions : {{recipe.directions}}</p>
 		</div>
+        <a class="btn btn-primary btn-sm" href="{{ url_for('update_recipe', recipe_id=recipe._id) }}">Edit</a>
 	</div>
 </div>
 {% endblock %}

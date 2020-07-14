@@ -3,6 +3,7 @@
 {% block title %}Recipes{% endblock %}
 
 {% block content %}
+<div class="container">
 {% for a in all_recipes %}
     <ul>
         <li>{{a.title}}</li>
@@ -11,4 +12,5 @@
         <li>{{a.directions}}</li>
     </ul>
 {% endfor %}
+</div>
 {% endblock %}

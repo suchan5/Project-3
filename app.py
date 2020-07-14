@@ -71,6 +71,17 @@ def show_all_recipes():
                            )
 
 
+@app.route('/recipe/update/<recipe_id>')
+def update_recipe(recipe_id):
+    recipe = client[DB_NAME].submittedRecipes.find_one({
+        "_id": ObjectId(recipe_id)
+    })
+
+    return render_template('update_recipe.teplate.html',
+                           recipe=recipe
+                           )
+
+
 # "magic code" -- boilerplate
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
