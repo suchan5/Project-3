@@ -92,7 +92,7 @@ def process_update_recipe(recipe_id):
     directions = request.form.get('directions')
     print(recipe_title, about_recipe, ingredients, directions)
 
-    updating = client[DB_NAME].submittedRecipes.update_one({
+    client[DB_NAME].submittedRecipes.update_one({
         "_id": ObjectId(recipe_id),
 
     }, {
