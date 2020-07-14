@@ -1,12 +1,36 @@
+.submission {
+    background-image: url('/static/img/brocoli.png');
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: center;  
+}
+
+.submitBox {
+    border-radius: 4px;
+    background-color: rgba(248, 248, 245, 0.808);
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-bottom: 5rem;
+    padding-top: 5rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
 .btnPosition {
     text-align: center;
 }
 
 .pageBorder {
-    border: solid 1px blueviolet;
+    border: solid 1px rgb(101, 46, 148);
     padding: 5%;
     margin-bottom: 5%;
 }
+
+
+
+
+
+
 
 footer {
     background-color: green;

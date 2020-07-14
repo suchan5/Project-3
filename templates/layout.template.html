@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
 		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<link rel="stylesheet" href="{{ url_for('static', filename ='css/style.css') }}" type="text/css" />
-    <script src="https://kit.fontawesome.com/0b10d58be2.js" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/0b10d58be2.js" crossorigin="anonymous"></script>
 
 
 	<title>{%block title%}{%endblock%}</title>
@@ -24,7 +24,7 @@
         </button>
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item">
+				<li class="nav-item">
 					<a class="navbar-brand"
 						href="{{url_for('home')}}"><img src="{{ url_for('static', filename='img/cooking.png') }}" class="img-fluid"> CookBooks</a>
 				</li>
@@ -57,27 +57,28 @@
 
 
 	<!--content block starts-->
-	<div class="container">
-		{%block content%}{%endblock%}
-	</div>
+
+	{%block content%}{%endblock%}
+
 	<!--content block ends-->
 
 
 
 
 
-    <!--footer starts-->
-    <footer class="container-fluid py-3">
-        <div class="row">
-            <div class="col">
-                <div class="copyright">Copyright <i class="fas fa-copyright"></i> 2020 CookBooks. All Rights Reserved</div>
-            </div>
-            <div class="col text-right">
-            <p><a href="mailto:suchan5@hotmail.com" target="_blank"><i class="fas fa-envelope email"></i></a></p>
-        </div>
-        </div>
-    </footer>
-    <!--footer ends-->
+	<!--footer starts-->
+	<footer class="container-fluid py-3">
+		<div class="row">
+			<div class="col">
+				<div class="copyright">Copyright <i class="fas fa-copyright"></i> 2020 CookBooks. All Rights Reserved
+				</div>
+			</div>
+			<div class="col text-right">
+				<p><a href="mailto:suchan5@hotmail.com" target="_blank"><i class="fas fa-envelope email"></i></a></p>
+			</div>
+		</div>
+	</footer>
+	<!--footer ends-->
 
 
 
