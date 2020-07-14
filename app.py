@@ -82,6 +82,32 @@ def update_recipe(recipe_id):
                            )
 
 
+@app.route('/recipe/update/<recipe_id>', methods=['POST'])
+def process_update_recipe(recipe_id):
+    print(request.form)
+
+    recipe_title = request.form.get('recipe-title')
+    about_recipe = request.form.get('about-recipe')
+    ingredients = request.form.get('ingredients')
+    directions = request.form.get('directions')
+    print(recipe_title, about_recipe, ingredients, directions)
+
+    updating = client[DB_NAME].submittedRecipes.update_one({
+        "_id": ObjectId(recipe_id),
+
+    }, {
+        "$set": {
+            "title": recipe_title,
+            "about": about_recipe,
+            "ingredients": ingredients,
+            "directions": directions
+        }
+    })
+    print(recipe_id)
+    print(ObjectId(recipe_id))
+    return redirect(url_for('board_view', recipe_id=ObjectId(recipe_id)))
+
+
 # "magic code" -- boilerplate
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
