@@ -108,6 +108,16 @@ def process_update_recipe(recipe_id):
     return redirect(url_for('board_view', recipe_id=ObjectId(recipe_id)))
 
 
+@app.route('/recipe/delete/<recipe_id>')
+def delete_recipe(recipe_id):
+    recipe = client[DB_NAME].submittedRecipes.find_one({
+        "_id": ObjectId(recipe_id)
+    })
+    return render_template('confirm_to_delete.template.html',
+                           recipe=recipe
+                           )
+
+
 # "magic code" -- boilerplate
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

@@ -1,0 +1,15 @@
+{% extends 'layout.template.html' %}
+
+{% block title %}Delete ｜ {{recipe.title}} {% endblock %}
+
+{%block content%}
+<div class="alert alert-danger">
+    <form method="POST">
+        Are you sure you want to delete {{recipe.title}}
+        <div>
+            <input type="suubmit" value="confirm" class="btn btn-danger"/>
+            <a class="btn btn-primary" href="{{url_for('show_all_recipes')}}">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
