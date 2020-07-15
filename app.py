@@ -118,6 +118,14 @@ def delete_recipe(recipe_id):
                            )
 
 
+@app.route('/recipe/delete/<recipe_id>', methods=['POST'])
+def process_delete_recipe(recipe_id):
+    client[DB_NAME].submittedRecipes.remove({
+        "_id": ObjectId(recipe_id)
+    })
+    return redirect(url_for('show_all_recipes'))
+
+
 # "magic code" -- boilerplate
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

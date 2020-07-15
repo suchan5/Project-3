@@ -6,8 +6,9 @@
 <section class="submission">
 	<div class="container py-5">
 		<div class="submitBox">
+
 			<form method="POST">
-				<h1 class="mt-5 mb-5 text-center">Submit a recipe to share!</h1>
+				<h1 class="mb-5 text-center">Submit a recipe to share!</h1>
 				<div class="pageBorder">
 					<div class="form-group">
 						<label>Recipe Title</label>
@@ -25,12 +26,14 @@
 						<label>Directions</label>
 						<textarea class="form-control" name="directions" placeholder="E.g. 1. Melt butter in a saucepan over medium-low heat."></textarea>
 					</div>
-					<div class="btnPosition">
-						<input type="submit" value="Save" class="btn btn-info mt-5"/>
-						<a class="btn btn-dark mt-5" href="{{ url_for('home') }}">Cancel</a>
-					</div>
+				</div>
+
+                <div class="btnPosition">
+					<input type="submit" value="Save" class="btn btn-info mt-5 px-4"/>
+					<a class="btn btn-dark mt-5 px-3" href="{{ url_for('home') }}">Cancel</a>
 				</div>
 			</form>
+
 		</div>
 	</div>
 </section>

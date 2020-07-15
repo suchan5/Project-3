@@ -8,15 +8,14 @@
 
 
 
-/* 'Submit a Recipe' page */
-.submission {
+.submission, .boardview, .allRecipes {
     background-image: url('/static/img/brocoli.png');
     background-size: cover;
     background-repeat: no-repeat; 
     background-position: center;  
 }
 
-.submitBox {
+div.submitBox, div.boardviewBox, div.allRecipesBox {
     border-radius: 4px;
     background-color: rgba(248, 248, 245, 0.808);
     padding-left: 3rem;
@@ -24,7 +23,7 @@
     padding-bottom: 5rem;
     padding-top: 5rem;
     margin-top: 5rem;
-    margin-bottom: 5rem;
+    margin-bottom: 10rem;
 }
 
 .btnPosition {
