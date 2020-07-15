@@ -6,20 +6,20 @@
 <section class="allRecipes">
     <div class="container py-5">
         <div class="allRecipesBox">
-        
-            
+                <h2 class="mb-3">All recipes in CookBooks</h2>
+                <hr class="mb-5">    
                 <div class="row">
                     {% for a in all_recipes %}
                         <div class="col-sm-3">
                             <div class="card mb-4">
                                 <div class="card-body">
                                     <img class="card-img-top" src="..." alt="Recipe Image">
-                                    <div class="card-body">
-                                        <h4 class="card-title">{{a.title}}</h4>
-                                        <blockquote class="blockquote mb-0 text-muted">
-                                            <p>"{{a.about}}"</p>
-                                        </blockquote>
-                                    </div>
+                                   
+                                    <h4 class="card-title">{{a.title}}</h4>
+                                    <blockquote class="blockquote mb-0 text-muted">
+                                        <p>"{{a.about}}"</p>
+                                    </blockquote>
+                                   
                                 </div>
                             </div>
                         </div>
