@@ -13,8 +13,8 @@
                     <div class="col-sm-3">
                         <a href="{{ url_for('board_view', recipe_id=a._id) }}" class="remove-hyperlink">
                             <div class="card mb-4">
+                                <img class="card-img-top" src="{{a.uploaded_file_url}}" alt="Recipe Image">
                                 <div class="card-body">
-                                    <img class="card-img-top" src="..." alt="Recipe Image">
                                     <h4 class="card-title">{{a.title}}</h4>
                                     <blockquote class="blockquote mb-0 text-muted">
                                         <p>"{{a.about}}"</p>

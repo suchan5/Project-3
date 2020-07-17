@@ -11,8 +11,10 @@
             <div class="pageBorder">
                 <div class="card">
                     <h4 class="card-header">{{recipe.title}}</h4>
-                    <div class="card-body">  
-                        <blockquote class="blockquote mb-0 text-muted"><p>"{{recipe.about}}"</p></blockquote>
+                    <div class="card-body">   
+                        <img class="card-img-top" src="{{recipe.uploaded_file_url}}" alt="Recipe Image"/>
+                        <br><br>
+                        <blockquote class="blockquote mb-0 text-muted text-center"><p>"{{recipe.about}}"</p></blockquote>
                         <p class="card-text">Ingredients : {{recipe.ingredients}}</p>
                         <p class="card-text">Directions : {% autoescape false %}{{recipe.directions}}{% endautoescape %}</p>
                     </div>   
