@@ -5,11 +5,6 @@ from bson import ObjectId
 import pymongo
 import datetime
 
-BOART_IMAGE_PATH = "/Users/suchan/Documents/Python/images"
-ALLOWED_EXTENSIONS = set(["txt", "pdf", "png", "jpg", "jpeg", "gif"])
-
-app.config["BOART_IMAGE_PATH"]
-
 # load in the variable in the .env file into our operating system environment
 load_dotenv()
 
@@ -18,6 +13,8 @@ app = Flask(__name__)
 # connect to Mongo
 MONGO_URI = os.environ.get('MONGO_URL')
 client = pymongo.MongoClient(MONGO_URI)
+CLOUD_NAME = os.environ.get('CLOUD_NAME')
+UPLOAD_PRESET = os.environ.get('UPLOAD_PRESET')
 
 # define my db name
 DB_NAME = "cookbooks"
@@ -36,7 +33,10 @@ def home():
 
 @app.route('/recipe/submit')
 def submit_recipe():
-    return render_template('submit_recipe.template.html')
+    return render_template('submit_recipe.template.html', 
+                           cloud_name = CLOUD_NAME,
+                           upload_preset = UPLOAD_PRESET
+                           )
 
 
 @app.route('/recipe/submit', methods=['POST'])

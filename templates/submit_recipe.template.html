@@ -40,24 +40,27 @@
 {% endblock %}
 
 {%block js%}
-<script>
+<script type="text/javascript">
 $(document).ready(function(){
     $("#summernote").summernote({
         height: 300,
         minHeight: null,
         maxHeight: null,
-        callbacks: {
-            onImageUpload: function(image) {
-                for(var i = 0; i < image.length; i++) {
-                    uploadImage(image[i])
-                }
-            }
-        }
     });
 });
 
-function uploadImage(image) {
-    console.log(image);
-}
+var myWidget = cloudinary.createUploadWidget({
+  cloudName: '{{cloud_name}}', 
+  uploadPreset: '{{upload_preset}}'}, (error, result) => { 
+    if (!error && result && result.event === "success") { 
+      console.log('Done! Here is the image info: ', result.info); 
+    }
+  }
+)
+
+document.getElementById("upload_widget").addEventListener("click", function(){
+    myWidget.open();
+  }, false);
+
 </script>
 {%endblock%}
