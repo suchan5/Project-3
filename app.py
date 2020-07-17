@@ -48,14 +48,13 @@ def process_submit_recipe():
     ingredients = request.form.get('ingredients')
     directions = request.form.get('directions')
     uploaded_file_url = request.form.get('uploaded_file_url')
-    print(recipe_title, about_recipe, ingredients, directions, uploaded_file_url)
 
     submission = client[DB_NAME].submittedRecipes.insert_one({
         "title": recipe_title,
         "about": about_recipe,
         "ingredients": ingredients,
         "directions": directions,
-        "uploaded_file_url": uploaded_file_url 
+        "uploaded_file_url": uploaded_file_url
     })
     return redirect(url_for('board_view', recipe_id=submission.inserted_id))
 
@@ -83,7 +82,6 @@ def update_recipe(recipe_id):
     recipe = client[DB_NAME].submittedRecipes.find_one({
         "_id": ObjectId(recipe_id)
     })
-
     return render_template('update_recipe.teplate.html',
                            recipe=recipe
                            )
@@ -97,7 +95,7 @@ def process_update_recipe(recipe_id):
     about_recipe = request.form.get('about-recipe')
     ingredients = request.form.get('ingredients')
     directions = request.form.get('directions')
-    print(recipe_title, about_recipe, ingredients, directions)
+    uploaded_file_url = request.form.get('uploaded_file_url')
 
     client[DB_NAME].submittedRecipes.update_one({
         "_id": ObjectId(recipe_id),
@@ -107,7 +105,8 @@ def process_update_recipe(recipe_id):
             "title": recipe_title,
             "about": about_recipe,
             "ingredients": ingredients,
-            "directions": directions
+            "directions": directions,
+            "uploaded_file_url": uploaded_file_url
         }
     })
     print(recipe_id)
