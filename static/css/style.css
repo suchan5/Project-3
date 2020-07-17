@@ -41,6 +41,12 @@ div.submitBox, div.boardviewBox, div.allRecipesBox {
 
 
 
+a.remove-hyperlink,
+a.remove-hyperlink:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
 
 
 
