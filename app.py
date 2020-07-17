@@ -33,9 +33,9 @@ def home():
 
 @app.route('/recipe/submit')
 def submit_recipe():
-    return render_template('submit_recipe.template.html', 
-                           cloud_name = CLOUD_NAME,
-                           upload_preset = UPLOAD_PRESET
+    return render_template('submit_recipe.template.html',
+                           cloud_name=CLOUD_NAME,
+                           upload_preset=UPLOAD_PRESET
                            )
 
 
@@ -83,7 +83,9 @@ def update_recipe(recipe_id):
         "_id": ObjectId(recipe_id)
     })
     return render_template('update_recipe.teplate.html',
-                           recipe=recipe
+                           recipe=recipe,
+                           cloud_name=CLOUD_NAME,
+                           upload_preset=UPLOAD_PRESET
                            )
 
 
