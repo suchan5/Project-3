@@ -22,9 +22,9 @@
 						<label>Ingredients</label>
 						<textarea class="form-control" name="ingredients" placeholder="E.g. ½ pound shrimp"></textarea>
 					</div>
-					<div class="form-group">
+                    <div class="form-group">
 						<label>Directions</label>
-						<textarea class="form-control" name="directions" placeholder="E.g. 1. Melt butter in a saucepan over medium-low heat."></textarea>
+						<textarea class="form-control" name="directions" id="summernote" placeholder="E.g. 1. Melt butter in a saucepan over medium-low heat."></textarea>
 					</div>
 				</div>
 
@@ -38,3 +38,15 @@
 	</div>
 </section>
 {% endblock %}
+
+{%block js%}
+<script>
+$(document).ready(function(){
+    $("#summernote").summernote({
+        height: 300,
+        minHeight: null,
+        maxHeight: null
+    });
+})
+</script>
+{%endblock%}

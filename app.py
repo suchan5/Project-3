@@ -65,7 +65,7 @@ def board_view(recipe_id):
 
 @app.route('/recipes')
 def show_all_recipes():
-    all_recipes = client[DB_NAME].submittedRecipes.find().limit(10)
+    all_recipes = client[DB_NAME].submittedRecipes.find().limit(12)
     return render_template('show_all_recipes.template.html',
                            all_recipes=all_recipes
                            )

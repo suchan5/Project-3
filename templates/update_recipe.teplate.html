@@ -28,7 +28,7 @@
 
 					<div class="form-group">
 						<label>Directions</label>
-						<textarea class="form-control" name="directions">{{recipe.directions}}</textarea>
+						<textarea class="form-control" id ="summernote" name="directions">{{recipe.directions}}</textarea>
 					</div>
 
 					<div class="btnPosition">
@@ -43,3 +43,15 @@
 	</div>
 </section>
 {% endblock %}
+
+{%block js%}
+<script>
+$(document).ready(function(){
+    $("#summernote").summernote({
+        height: 300,
+        minHeight: null,
+        maxHeight: null
+    });
+})
+</script>
+{%endblock%}

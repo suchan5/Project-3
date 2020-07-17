@@ -1,6 +1,6 @@
 {% extends 'layout.template.html' %}
 
-{% block title %}{{recipe.title}} Receipe{% endblock %}
+{% block title %}Receipe ｜ {{recipe.title}}{% endblock %}
 
 {%block content%}
 <section class="boardview">
@@ -14,7 +14,7 @@
                     <div class="card-body">  
                         <blockquote class="blockquote mb-0 text-muted"><p>"{{recipe.about}}"</p></blockquote>
                         <p class="card-text">Ingredients : {{recipe.ingredients}}</p>
-                        <p class="card-text">Directions : {{recipe.directions}}</p>
+                        <p class="card-text">Directions : {% autoescape false %}{{recipe.directions}}{% endautoescape %}</p>
                     </div>   
                 </div>
             </div>
