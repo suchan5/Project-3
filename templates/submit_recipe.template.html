@@ -18,17 +18,17 @@
 
 					<div class="form-group">
 						<label>About the recipe</label>
-						<textarea class="form-control" name="about-recipe" placeholder="E.g. This recipe is passed down from my grandma!"></textarea>
+						<textarea class="form-control" name="about-recipe" placeholder="E.g. This recipe is passed down from my grandma!"><c:out value="${content}" /></textarea>
 					</div>
 
 					<div class="form-group">
 						<label>Ingredients</label>
-						<textarea class="form-control" name="ingredients" placeholder="E.g. ½ pound shrimp"></textarea>
+						<textarea class="form-control" name="ingredients" placeholder="E.g. ½ pound shrimp"><c:out value="${content}" /></textarea>
 					</div>
 
                     <div class="form-group">
 						<label>Directions</label>
-						<textarea class="form-control" name="directions" placeholder="E.g. 1. Melt butter in a saucepan over medium-low heat."></textarea>
+						<textarea class="form-control" name="directions" placeholder="E.g. 1. Melt butter in a saucepan over medium-low heat."><c:out value="${content}" /></textarea>
 					</div>
 
                     <a id="upload_widget" class="btn btn-warning">Upload files</a>
