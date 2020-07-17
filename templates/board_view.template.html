@@ -7,16 +7,18 @@
     <div class="container py-5">
         <div class="boardviewBox">
 
-            <h1 class="text-center mb-5">{{recipe.title}}</h1>
+            <h1 class="text-center mb-5">Cookbooker's recipe</h1>
             <div class="pageBorder">
                 <div class="card">
-                    <h4 class="card-header">{{recipe.title}}</h4>
+                    <h4 class="card-header text-center">{{recipe.title}}</h4>
                     <div class="card-body">   
                         <img class="card-img-top" src="{{recipe.uploaded_file_url}}" alt="Recipe Image"/>
                         <br><br>
                         <blockquote class="blockquote mb-0 text-muted text-center"><p>"{{recipe.about}}"</p></blockquote>
-                        <p class="card-text">Ingredients : {{recipe.ingredients}}</p>
-                        <p class="card-text">Directions : {% autoescape false %}{{recipe.directions}}{% endautoescape %}</p>
+                        <p class="card-text">Ingredients :</p>
+                        <p>{{recipe.ingredients}}</p>
+                        <p class="card-text">Directions :</p>
+                        <p>{{recipe.directions}}</p>
                     </div>   
                 </div>
             </div>

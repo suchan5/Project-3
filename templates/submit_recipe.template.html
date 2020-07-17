@@ -10,22 +10,27 @@
 			<form method="POST">
 				<h1 class="mb-5 text-center">Submit a recipe to share!</h1>
 				<div class="pageBorder">
+
 					<div class="form-group">
 						<label>Recipe Title</label>
 						<input type="text" class="form-control" name="recipe-title" placeholder="E.g. Seafood Chowder"/>
                     </div>
+
 					<div class="form-group">
 						<label>About the recipe</label>
 						<textarea class="form-control" name="about-recipe" placeholder="E.g. This recipe is passed down from my grandma!"></textarea>
 					</div>
+
 					<div class="form-group">
 						<label>Ingredients</label>
 						<textarea class="form-control" name="ingredients" placeholder="E.g. ½ pound shrimp"></textarea>
 					</div>
+
                     <div class="form-group">
 						<label>Directions</label>
-						<textarea class="form-control" name="directions" id="summernote" placeholder="E.g. 1. Melt butter in a saucepan over medium-low heat."></textarea>
+						<textarea class="form-control" name="directions" placeholder="E.g. 1. Melt butter in a saucepan over medium-low heat."></textarea>
 					</div>
+
                     <a id="upload_widget" class="btn btn-warning">Upload files</a>
                     <input type="hidden" id="uploaded_file_url" name="uploaded_file_url"/>
 
@@ -36,7 +41,6 @@
 					<a class="btn btn-dark mt-5 px-3" href="{{ url_for('home') }}">Cancel</a>
 				</div>
 			</form>
-
 		</div>
 	</div>
 </section>
@@ -44,15 +48,7 @@
 
 {%block js%}
 <script type="text/javascript">
-$(document).ready(function(){
-    $("#summernote").summernote({
-        height: 300,
-        minHeight: null,
-        maxHeight: null,
-    });
-});
-
-var myWidget = cloudinary.createUploadWidget({
+let myWidget = cloudinary.createUploadWidget({
   cloudName: '{{cloud_name}}', 
   uploadPreset: '{{upload_preset}}'}, (error, result) => { 
     if (!error && result && result.event === "success") { 
@@ -66,6 +62,5 @@ var myWidget = cloudinary.createUploadWidget({
 document.getElementById("upload_widget").addEventListener("click", function(){
     myWidget.open();
   }, false);
-
 </script>
 {%endblock%}
