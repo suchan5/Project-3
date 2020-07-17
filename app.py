@@ -5,6 +5,11 @@ from bson import ObjectId
 import pymongo
 import datetime
 
+BOART_IMAGE_PATH = "/Users/suchan/Documents/Python/images"
+ALLOWED_EXTENSIONS = set(["txt", "pdf", "png", "jpg", "jpeg", "gif"])
+
+app.config["BOART_IMAGE_PATH"]
+
 # load in the variable in the .env file into our operating system environment
 load_dotenv()
 

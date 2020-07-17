@@ -45,8 +45,19 @@ $(document).ready(function(){
     $("#summernote").summernote({
         height: 300,
         minHeight: null,
-        maxHeight: null
+        maxHeight: null,
+        callbacks: {
+            onImageUpload: function(image) {
+                for(var i = 0; i < image.length; i++) {
+                    uploadImage(image[i])
+                }
+            }
+        }
     });
-})
+});
+
+function uploadImage(image) {
+    console.log(image);
+}
 </script>
 {%endblock%}
