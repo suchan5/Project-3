@@ -40,6 +40,8 @@ div.submitBox, div.boardviewBox, div.allRecipesBox {
 
 
 
+
+
 /* 'Show all submitted recipes' page*/
 a.remove-hyperlink,
 a.remove-hyperlink:hover {
@@ -52,9 +54,8 @@ a.remove-hyperlink:hover {
 }
 
 #cardEffect:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
-
 
 
 
