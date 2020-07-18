@@ -8,6 +8,7 @@
 
 
 
+/* 'Submissiont' page & 'Edit' page */
 .submission, .boardview, .allRecipes {
     background-image: url('/static/img/brocoli.png');
     background-size: cover;
@@ -26,16 +27,15 @@ div.submitBox, div.boardviewBox, div.allRecipesBox {
     margin-bottom: 10rem;
 }
 
-.btnPosition {
-    text-align: center;
-}
-
 .pageBorder {
     border: solid 1px rgb(101, 46, 148);
     padding: 5%;
     margin-bottom: 5%;
 }
 
+.btnPosition {
+    text-align: center;
+}
 
 
 
@@ -46,6 +46,8 @@ a.remove-hyperlink:hover {
   color: inherit;
   text-decoration: none;
 }
+
+
 
 
 

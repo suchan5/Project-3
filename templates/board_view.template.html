@@ -7,27 +7,34 @@
     <div class="container py-5">
         <div class="boardviewBox">
 
-            <h1 class="text-center mb-5">Cookbooker's recipe</h1>
-            <div class="pageBorder">
-                <div class="card">
-                    <h4 class="card-header text-center">{{recipe.title}}</h4>
-                    <div class="card-body">   
-                        <img class="card-img-top" src="{{recipe.uploaded_file_url}}" alt="Recipe Image"/>
-                        <br><br>
-                        <blockquote class="blockquote mb-0 text-muted text-center"><p>"{{recipe.about}}"</p></blockquote>
-                        <p class="card-text">Ingredients :</p>
-                        <p>{{recipe.ingredients}}</p>
-                        <p class="card-text">Directions :</p>
-                        <p>{{recipe.directions}}</p>
-                    </div>   
+            <div class="row">
+                <div class="col-sm">
+                    <h1 class="mb-5">Cookbooker's recipe</h1>
+                    <div class="pageBorder">
+                        <div class="card">
+                            <h2 class="card-header text-center py-4">{{recipe.title}}</h2>
+                            <div class="card-body">   
+                                <img class="card-img-top" src="{{recipe.uploaded_file_url}}" alt="Recipe Image"/>
+                                <br><br>
+                                <blockquote class="blockquote py-5 text-muted text-center"><p>"{{recipe.about}}"</p></blockquote>
+                                <p class="h5 card-text">Ingredients</p>
+                                <p>{{recipe.ingredients}}</p>
+                                <p class="h5 card-text mt-5">Directions</p>
+                                <p class="mb-5">{{recipe.directions}}</p>
+                            </div>   
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="btnPosition">
-                <a class="btn btn-info mt-5 mb-5 px-4" href="{{ url_for('update_recipe', recipe_id=recipe._id) }}">Edit</a>
-                <a class="btn btn-info mt-5 mb-5 px-3" href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}">Delete</a>
-            </div>
+        
 
+            <a class="btn btn-success mb-5" href="{{ url_for('show_all_recipes') }}">Go to list</a>
+            <a class="btn btn-dark mb-5 px-3 float-right ml-2" href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}">Delete</a>
+            <a class="btn btn-info mb-5 px-4 float-right" href="{{ url_for('update_recipe', recipe_id=recipe._id) }}">Edit</a>
+           
+           
+            
+            
         </div>
     </div>
 </section>

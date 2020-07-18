@@ -13,6 +13,8 @@ app = Flask(__name__)
 # connect to Mongo
 MONGO_URI = os.environ.get('MONGO_URL')
 client = pymongo.MongoClient(MONGO_URI)
+
+# connect to Cloudinary for uploading files
 CLOUD_NAME = os.environ.get('CLOUD_NAME')
 UPLOAD_PRESET = os.environ.get('UPLOAD_PRESET')
 
