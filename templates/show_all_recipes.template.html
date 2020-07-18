@@ -13,13 +13,18 @@
                     <div class="col-sm-3">
                         <a href="{{ url_for('board_view', recipe_id=a._id) }}" class="remove-hyperlink">
                             <div id="cardEffect" class="card shadow rounded mb-4">
-                                <img class="card-img-top" src="{{a.uploaded_file_url}}" alt="Recipe Image">
+
+                                {% if a.uploaded_file_url %}
+                                    <img class="card-img-top" src="{{a.uploaded_file_url}}" alt="Recipe Image">
+                                {% endif %}
+
                                 <div class="card-body">
                                     <h4 class="card-title">{{a.title}}</h4>
                                     <blockquote class="blockquote text-muted">
                                         <p>"{{a.about}}"</p>
                                     </blockquote>
                                 </div>
+
                             </div>
                         </a>
                     </div>

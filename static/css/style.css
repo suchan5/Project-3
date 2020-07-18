@@ -37,12 +37,21 @@ div.submitBox, div.boardviewBox, div.allRecipesBox {
     text-align: center;
 }
 
+div#previewImg_div img {
+    max-width: 100%;
+}
 
 
 
 
+/* 'Show the sumitted' page*/
+#listBtn {
+    color: black;
+}
 
-/* 'Show all submitted recipes' page*/
+
+
+/* 'Show all recipes' page*/
 a.remove-hyperlink,
 a.remove-hyperlink:hover {
   color: inherit;
