@@ -66,6 +66,24 @@ a.remove-hyperlink:hover {
     transform: scale(1.1);
 }
 
+.text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.allRecipes img.card-img-top {
+    object-fit: cover;
+    width: 100%;
+    height: 15vw;
+}
+
+.allRecipes .card-body {
+    object-fit: cover;
+    width: 100%;
+    height: 15vw;
+}
+
 
 
 
