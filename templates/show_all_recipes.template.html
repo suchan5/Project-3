@@ -32,6 +32,12 @@
 
 			</div>
 
+            {% if page_number > 0 %}
+            <a href="/recipes?page={{page_number-1}}"><img src="static/img/left-arrow (2).png" class="img-fluid" alt="previous-page"/></a>
+            {% endif %}
+
+            <a href="/recipes?page={{page_number+1}}"><img src="static/img/next (2).png" class="img-fluid" alt="previous-page"/></a>
+
 		</div>
 	</div>
 </section>

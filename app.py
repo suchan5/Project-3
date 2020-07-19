@@ -73,9 +73,21 @@ def board_view(recipe_id):
 
 @app.route('/recipes')
 def show_all_recipes():
-    all_recipes = client[DB_NAME].submittedRecipes.find().limit(12)
+    # get the page number
+    page_number = request.args.get('page')
+
+    if page_number == None:
+        page_number = 0
+    else:
+        page_number = int(page_number)
+    print("page number=", page_number)
+
+    all_recipes = client[DB_NAME].submittedRecipes.find().skip(
+        page_number*12).limit(12)
+
     return render_template('show_all_recipes.template.html',
-                           all_recipes=all_recipes
+                           all_recipes=all_recipes,
+                           page_number=page_number
                            )
 
 
