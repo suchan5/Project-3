@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from bson import ObjectId
 import pymongo
 import datetime
+import math
 
 # load in the variable in the .env file into our operating system environment
 load_dotenv()
@@ -73,21 +74,35 @@ def board_view(recipe_id):
 
 @app.route('/recipes')
 def show_all_recipes():
-    # get the page number
-    page_number = request.args.get('page')
 
-    if page_number == None:
-        page_number = 0
-    else:
-        page_number = int(page_number)
-    print("page number=", page_number)
+    # get the page number
+    page = request.args.get('page', 1, type=int)
+    # how many pages to present
+    limit = request.args.get('limit', 12, type=int)
+    # total number of post
+    tot_count = client[DB_NAME].submittedRecipes.find().count()
+    # get the last page number
+    last_page_num = math.ceil(tot_count / limit)
+
+    # To show five in block
+    block_size = 5
+    # to find the current location of block
+    block_num = int((page - 1) / block_size)
+    # start location of block
+    block_start = int((block_size * block_num) + 1)
+    # end location of block
+    block_last = math.ceil(block_start + (block_size - 1))
 
     all_recipes = client[DB_NAME].submittedRecipes.find().skip(
-        page_number*12).limit(12)
+        (page-1)*limit).limit(limit)
 
     return render_template('show_all_recipes.template.html',
                            all_recipes=all_recipes,
-                           page_number=page_number
+                           page=page,
+                           limit=limit,
+                           last_page_num=last_page_num,
+                           block_start=block_start,
+                           block_last=block_last
                            )
 
 
@@ -130,7 +145,7 @@ def process_update_recipe(recipe_id):
     return redirect(url_for('board_view', recipe_id=ObjectId(recipe_id)))
 
 
-@app.route('/recipe/delete/<recipe_id>')
+@ app.route('/recipe/delete/<recipe_id>')
 def delete_recipe(recipe_id):
     recipe = client[DB_NAME].submittedRecipes.find_one({
         "_id": ObjectId(recipe_id)
@@ -140,7 +155,7 @@ def delete_recipe(recipe_id):
                            )
 
 
-@app.route('/recipe/delete/<recipe_id>', methods=['POST'])
+@ app.route('/recipe/delete/<recipe_id>', methods=['POST'])
 def process_delete_recipe(recipe_id):
     client[DB_NAME].submittedRecipes.remove({
         "_id": ObjectId(recipe_id)
