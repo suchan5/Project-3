@@ -31,9 +31,11 @@
 							<textarea class="form-control" rows="10" name="directions">{{recipe.directions}}</textarea>
 						</div>
 
+                        {% if recipe.uploaded_file_url %}
                         <img src="{{recipe.uploaded_file_url}}" id="uploaded-image" class="card-img-top"/>
                         <br>
-
+                        {% endif %}
+                        
 						<a id="upload_widget" class="btn btn-warning mt-3">Upload Photo</a>
 						<input type="hidden" id="uploaded_file_url" name="uploaded_file_url"/>
 						<br>
