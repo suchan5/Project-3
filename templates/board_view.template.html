@@ -32,7 +32,7 @@
             </div>
         
 
-            <a class="btn btn-success mb-5" id="listBtn" href="{{ url_for('show_all_recipes') }}">Go to list</a>
+            <a class="btn btn-success mb-5" href="{{ url_for('show_all_recipes') }}">Go to list</a>
             <a class="btn btn-dark mb-5 px-3 float-right ml-2" href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}">Delete</a>
             <a class="btn btn-info mb-5 px-4 float-right" href="{{ url_for('update_recipe', recipe_id=recipe._id) }}">Edit</a>
            

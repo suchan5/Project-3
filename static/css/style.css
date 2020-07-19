@@ -8,7 +8,7 @@
 
 
 
-/* 'Submissiont' page & 'Edit' page */
+/* 'Submissiont' page, 'Edit' page, 'View all recipes' page */
 .submission, .boardview, .allRecipes {
     background-image: url('/static/img/brocoli.png');
     background-size: cover;
@@ -44,10 +44,7 @@ div#previewImg_div img {
 
 
 
-/* 'Show the sumitted' page*/
-#listBtn {
-    color: black;
-}
+
 
 
 
@@ -66,22 +63,16 @@ a.remove-hyperlink:hover {
     transform: scale(1.1);
 }
 
+.allRecipes img.card-img-top {
+    object-fit: cover;
+    width: 100%;
+    height: 200px;
+}
+
 .text-overflow {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-}
-
-.allRecipes img.card-img-top {
-    object-fit: cover;
-    width: 100%;
-    height: 15vw;
-}
-
-.allRecipes .card-body {
-    object-fit: cover;
-    width: 100%;
-    height: 15vw;
 }
 
 

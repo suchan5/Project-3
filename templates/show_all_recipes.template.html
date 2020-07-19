@@ -4,33 +4,36 @@
 
 {% block content %}
 <section class="allRecipes">
-    <div class="container py-5">
-        <div class="allRecipesBox">
-            <h2 class="mb-3">All recipes in CookBooks</h2>
-            <hr class="mb-5">    
-            <div class="row">
-                {% for a in all_recipes %}
-                    <div class="col-sm-3">
-                        <a href="{{ url_for('board_view', recipe_id=a._id) }}" class="remove-hyperlink">
-                            <div id="cardEffect" class="card shadow rounded mb-4">
+	<div class="container py-5">
+		<div class="allRecipesBox">
 
-                                {% if a.uploaded_file_url %}
-                                    <img class="card-img-top" src="{{a.uploaded_file_url}}" alt="Recipe Image">
-                                {% endif %}
+			<h2 class="mb-3">All recipes in CookBooks</h2>
+			<hr class="mb-5">
+			<div class="row">
 
-                                <div class="card-body">
-                                    <h4 class="card-title">{{a.title}}</h4>
-                                    <blockquote class="blockquote text-muted">
-                                        <p class="text-overflow">"{{a.about}}"</p>
-                                    </blockquote>
-                                </div>
+				{% for a in all_recipes %}
+				<div class="col-sm-3 mb-5">
+					<div class="card h-100 shadow mb-4" id="cardEffect">
+						<a href="{{ url_for('board_view', recipe_id=a._id) }}" class="remove-hyperlink">
 
-                            </div>
-                        </a>
-                    </div>
-                {% endfor %}
-            </div>        
-        </div>
-    </div>
+							{% if a.uploaded_file_url %}
+							<img class="card-img-top" src="{{a.uploaded_file_url}}" alt="Recipe Image">
+                            {% endif %}
+
+							<div class="card-body">
+								<h6 class="card-title">{{a.title}}</h6>
+								<blockquote class="blockquote text-muted"><p class="text-overflow">"{{a.about}}"</p></blockquote>
+							</div>
+
+						</a>
+					</div>
+				</div>
+				{% endfor %}
+
+			</div>
+
+		</div>
+	</div>
 </section>
+
 {% endblock %}
