@@ -31,6 +31,7 @@
 				{% endfor %}
 
 			</div>
+            <!--paging starts-->
             {% if block_start - 1 > 0 %}
                 <a href="{{url_for('show_all_recipes', page=block_start-1)}}">[ Previous ]</a>
             {% endif %}
@@ -51,6 +52,10 @@
             {% if block_last < last_page_num %}
                 <a href="{{url_for('show_all_recipes', page=block_last+ 1)}}">[ Next ]</a>
             {% endif %}
+            <!--paging ends-->
+            
+
+
 
             
 

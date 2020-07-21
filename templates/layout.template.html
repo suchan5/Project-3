@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html lang="en">
 
 <head>
@@ -41,7 +41,7 @@
 
 			<!--search engine starts-->
 			<form class="form-inline my-2 my-lg-0" method="GET">
-				<input class="form-control mr-sm-2" type="search" placeholder="Search for a recipe" aria-label="Search" name="search-terms">
+				<input class="form-control mr-sm-2" type="search" placeholder="Search for a recipe" aria-label="Search" name="search-terms" {% if search_terms != "" and search_terms is not none %} value="{{search_terms}}" {% endif %}>
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 			</form>
 			<!--search engine ends-->

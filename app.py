@@ -33,7 +33,7 @@ app.secret_key = SESSION_KEY
 def home():
     return render_template('home.template.html')
 
-
+ 
 @app.route('/recipe/submit')
 def submit_recipe():
     return render_template('submit_recipe.template.html',
@@ -115,7 +115,8 @@ def show_all_recipes():
                            limit=limit,
                            last_page_num=last_page_num,
                            block_start=block_start,
-                           block_last=block_last
+                           block_last=block_last,
+                           search_terms=search_terms
                            )
 
 
