@@ -81,6 +81,29 @@ a.remove-hyperlink:hover {
     white-space: nowrap;
 }
 
+.pagination {
+    justify-content: center;
+}
+
+.pagination a {
+  color: black;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: solid rgb(224, 223, 223) 1px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.pagination b {
+  background-color: seagreen;
+  color: white;
+  width: 30px;
+  text-align: center;
+}
+
+.pagination a:hover:not(b) {
+    background-color: #ddd;
+}
 
 
 

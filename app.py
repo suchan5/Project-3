@@ -108,7 +108,6 @@ def show_all_recipes():
 
     all_recipes = client[DB_NAME].submittedRecipes.find(criteria).skip(
         (page-1)*limit).limit(limit)
-
     return render_template('show_all_recipes.template.html',
                            all_recipes=all_recipes,
                            page=page,
