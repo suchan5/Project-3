@@ -21,8 +21,29 @@
                                 {% endif %}
 
                                 <blockquote class="blockquote py-5 text-muted text-center"><p>"{{recipe.about}}"</p></blockquote>
-                                <p class="h5 card-text">Ingredients</p>
+                                <p class="h5 card-text mt-5">Cuisine</p>
+                                <p class="mb-5">{{recipe.cuisine.name}}</p>
+                                <p class="h5 card-text mt-5">Ingredients</p>
                                 <p>{{recipe.ingredients}}</p>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <p class="h5 card-text mt-5">Prep Time</p>
+                                        <p>{{recipe.prep_time}}</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p class="h5 card-text mt-5">Cook Time</p>
+                                        <p>{{recipe.cook_time}}</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p class="h5 card-text mt-5">Number of Servings</p>
+                                        <p>{{recipe.servings}}</p>
+                                    </div>
+                                </div>
+
+
+
+
                                 <p class="h5 card-text mt-5">Directions</p>
                                 <p class="mb-5">{{recipe.directions}}</p>
                             </div>   

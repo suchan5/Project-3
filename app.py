@@ -36,9 +36,12 @@ def home():
  
 @app.route('/recipe/submit')
 def submit_recipe():
+    all_cuisines = client[DB_NAME].cuisines.find()
+
     return render_template('submit_recipe.template.html',
                            cloud_name=CLOUD_NAME,
-                           upload_preset=UPLOAD_PRESET
+                           upload_preset=UPLOAD_PRESET,
+                           all_cuisines=all_cuisines
                            )
 
 
@@ -49,13 +52,28 @@ def process_submit_recipe():
     recipe_title = request.form.get('recipe-title')
     about_recipe = request.form.get('about-recipe')
     ingredients = request.form.get('ingredients')
+    prep_time = request.form.get('prep-time')
+    cook_time = request.form.get('cook-time')
+    servings = request.form.get('servings')
+    cuisine_names = request.form.get('cuisines')
     directions = request.form.get('directions')
     uploaded_file_url = request.form.get('uploaded_file_url')
+
+    cuisines_dropdown = client[DB_NAME].cuisines.find_one({
+        "_id": ObjectId(cuisine_names)
+    })
 
     submission = client[DB_NAME].submittedRecipes.insert_one({
         "title": recipe_title,
         "about": about_recipe,
         "ingredients": ingredients,
+        "prep_time": prep_time,
+        "cook_time": cook_time,
+        "servings": servings,
+        "cuisine": {
+            "_id": cuisines_dropdown["_id"],
+            "name": cuisines_dropdown["cuisine_name"],
+        },
         "directions": directions,
         "uploaded_file_url": uploaded_file_url
     })
@@ -84,7 +102,7 @@ def show_all_recipes():
     # get the last page number
     last_page_num = math.ceil(tot_count / limit)
 
-    # To show five in block
+    # To show five in a block
     block_size = 5
     # to find the current location of block
     block_num = int((page - 1) / block_size)
@@ -124,10 +142,12 @@ def update_recipe(recipe_id):
     recipe = client[DB_NAME].submittedRecipes.find_one({
         "_id": ObjectId(recipe_id)
     })
+    all_cuisines = client[DB_NAME].cuisines.find()
     return render_template('update_recipe.teplate.html',
                            recipe=recipe,
                            cloud_name=CLOUD_NAME,
-                           upload_preset=UPLOAD_PRESET
+                           upload_preset=UPLOAD_PRESET,
+                           all_cuisines = all_cuisines
                            )
 
 
@@ -138,8 +158,16 @@ def process_update_recipe(recipe_id):
     recipe_title = request.form.get('recipe-title')
     about_recipe = request.form.get('about-recipe')
     ingredients = request.form.get('ingredients')
+    prep_time = request.form.get('prep-time')
+    cook_time = request.form.get('cook-time')
+    servings = request.form.get('servings')
+    cuisine_names = request.form.get('cuisines')
     directions = request.form.get('directions')
     uploaded_file_url = request.form.get('uploaded_file_url')
+
+    cuisines_dropdown = client[DB_NAME].cuisines.find_one({
+        "_id": ObjectId(cuisine_names)
+    })
 
     client[DB_NAME].submittedRecipes.update_one({
         "_id": ObjectId(recipe_id),
@@ -149,6 +177,13 @@ def process_update_recipe(recipe_id):
             "title": recipe_title,
             "about": about_recipe,
             "ingredients": ingredients,
+            "prep_time": prep_time,
+            "cook_time": cook_time,
+            "servings": servings,
+            "cuisine": {
+            "_id": cuisines_dropdown["_id"],
+            "name": cuisines_dropdown["cuisine_name"],
+            },
             "directions": directions,
             "uploaded_file_url": uploaded_file_url
         }

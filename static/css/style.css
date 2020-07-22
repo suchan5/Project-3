@@ -90,15 +90,18 @@ a.remove-hyperlink:hover {
   text-decoration: none;
   transition: background-color .3s;
   border: solid rgb(224, 223, 223) 1px;
-  margin-left: 2px;
-  margin-right: 2px;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding: 8px 20px;
 }
 
 .pagination b {
-  background-color: seagreen;
+  background-color: #9acd32;
   color: white;
   width: 30px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pagination a:hover:not(b) {
