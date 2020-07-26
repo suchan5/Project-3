@@ -1,24 +1,13 @@
-/* 'Home' page */
-.masthead {
-    margin-top: 6rem;
-    margin-bottom: 6rem;
-}
-
-
-
-
-
-
 
 /* 'Submissiont' page, 'Edit' page, 'View all recipes' page */
-.submission, .boardview, .allRecipes {
+.masthead, .submission, .boardview, .allRecipes {
     background-image: url('/static/img/brocoli.png');
     background-size: contain;
     background-repeat: no-repeat; 
     background-position: bottom;  
 }
 
-div.submitBox, div.boardviewBox, div.allRecipesBox {
+div.mastheadBox, div.submitBox, div.boardviewBox, div.allRecipesBox {
     border-radius: 4px;
     background-color: rgba(248, 248, 245, 0.808);
     padding-left: 3rem;

@@ -9,7 +9,7 @@
 
             <div class="row">
                 <div class="col-sm">
-                    <h1 class="mb-5">Cookbooker's recipe</h1>
+                    <h2 class="mb-5">Cookbooker's recipe</h2>
                     <div class="pageBorder">
                         <div class="card">
                             <h2 class="card-header text-center py-4">{{recipe.title}}</h2>
@@ -53,7 +53,7 @@
             </div>
         
 
-            <a class="btn btn-success" href="{{ url_for('show_all_recipes') }}">Go to list</a>
+            <a class="btn btn-success" href="{{ url_for('show_all_recipes', page=page, search_terms=search_terms) }}">Go to list</a>
             <a class="btn btn-dark px-3 float-right ml-2" href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}">Delete</a>
             <a class="btn btn-info px-4 float-right" href="{{ url_for('update_recipe', recipe_id=recipe._id) }}">Edit</a>
             

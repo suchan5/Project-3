@@ -82,11 +82,19 @@ def process_submit_recipe():
 
 @app.route('/view/<recipe_id>')
 def board_view(recipe_id):
+
+    # get the page number
+    page = request.args.get('page', 1, type=int)
+    # extract out the search term
+    search_terms = request.args.get('search-terms')
+
     recipe = client[DB_NAME].submittedRecipes.find_one({
         "_id": ObjectId(recipe_id)
     })
     return render_template('board_view.template.html',
-                           recipe=recipe
+                           recipe=recipe,
+                           page=page,
+                           search_terms=search_terms
                            )
 
 
@@ -139,6 +147,7 @@ def show_all_recipes():
 
 @app.route('/recipe/update/<recipe_id>')
 def update_recipe(recipe_id):
+
     recipe = client[DB_NAME].submittedRecipes.find_one({
         "_id": ObjectId(recipe_id)
     })
