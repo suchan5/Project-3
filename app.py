@@ -220,20 +220,35 @@ def process_update_recipe(recipe_id):
 
 @ app.route('/recipe/delete/<recipe_id>')
 def delete_recipe(recipe_id):
+    # get the page number
+    page = request.args.get('page', 1, type=int)
+    # extract out the search term
+    search_terms = request.args.get('search-terms')
+
     recipe = client[DB_NAME].submittedRecipes.find_one({
         "_id": ObjectId(recipe_id)
     })
     return render_template('confirm_to_delete.template.html',
-                           recipe=recipe
+                           recipe=recipe,
+                           page=page,
+                           search_terms=search_terms
                            )
 
 
 @ app.route('/recipe/delete/<recipe_id>', methods=['POST'])
 def process_delete_recipe(recipe_id):
+
+    # get the page number
+    page = request.args.get('page', 1, type=int)
+    # extract out the search term
+    search_terms = request.args.get('search-terms')
+
     client[DB_NAME].submittedRecipes.remove({
         "_id": ObjectId(recipe_id)
     })
-    return redirect(url_for('show_all_recipes'))
+    return redirect(url_for('show_all_recipes',
+                    page=page,
+                    search_terms=search_terms))
 
 
 # "magic code" -- boilerplate
