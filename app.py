@@ -36,18 +36,44 @@ def home():
  
 @app.route('/recipe/submit')
 def submit_recipe():
+
+    # get the page number
+    page = request.args.get('page', 1, type=int)
+    # how many pages to present
+    limit = request.args.get('limit', 12, type=int)
+    # total number of post
+    tot_count = client[DB_NAME].submittedRecipes.find().count()
+    # get the last page number
+    last_page_num = math.ceil(tot_count / limit)
+
+    # assign 'last page num' to 'page'
+    page = last_page_num
+
     all_cuisines = client[DB_NAME].cuisines.find()
 
     return render_template('submit_recipe.template.html',
                            cloud_name=CLOUD_NAME,
                            upload_preset=UPLOAD_PRESET,
-                           all_cuisines=all_cuisines
+                           all_cuisines=all_cuisines,
+                           page=page
                            )
 
 
 @app.route('/recipe/submit', methods=['POST'])
 def process_submit_recipe():
     print(request.form)
+
+    # get the page number
+    page = request.args.get('page', 1, type=int)
+    # how many pages to present
+    limit = request.args.get('limit', 12, type=int)
+    # total number of post
+    tot_count = client[DB_NAME].submittedRecipes.find().count()
+    # get the last page number
+    last_page_num = math.ceil(tot_count / limit)
+
+    # assign 'last page number' to 'page'
+    page = last_page_num
 
     recipe_title = request.form.get('recipe-title')
     about_recipe = request.form.get('about-recipe')
@@ -78,7 +104,8 @@ def process_submit_recipe():
         "uploaded_file_url": uploaded_file_url
     })
     return redirect(url_for('board_view',
-                    recipe_id=submission.inserted_id))
+                    recipe_id=submission.inserted_id,
+                    page=page))
 
 
 @app.route('/view/<recipe_id>')
