@@ -77,7 +77,8 @@ def process_submit_recipe():
         "directions": directions,
         "uploaded_file_url": uploaded_file_url
     })
-    return redirect(url_for('board_view', recipe_id=submission.inserted_id))
+    return redirect(url_for('board_view',
+                    recipe_id=submission.inserted_id))
 
 
 @app.route('/view/<recipe_id>')
@@ -161,7 +162,7 @@ def update_recipe(recipe_id):
                            recipe=recipe,
                            cloud_name=CLOUD_NAME,
                            upload_preset=UPLOAD_PRESET,
-                           all_cuisines = all_cuisines,
+                           all_cuisines=all_cuisines,
                            page=page,
                            search_terms=search_terms
                            )
@@ -170,6 +171,11 @@ def update_recipe(recipe_id):
 @app.route('/recipe/update/<recipe_id>', methods=['POST'])
 def process_update_recipe(recipe_id):
     print(request.form)
+
+    # get the page number
+    page = request.args.get('page', 1, type=int)
+    # extract out the search term
+    search_terms = request.args.get('search-terms')
 
     recipe_title = request.form.get('recipe-title')
     about_recipe = request.form.get('about-recipe')
@@ -197,8 +203,8 @@ def process_update_recipe(recipe_id):
             "cook_time": cook_time,
             "servings": servings,
             "cuisine": {
-            "_id": cuisines_dropdown["_id"],
-            "name": cuisines_dropdown["cuisine_name"],
+                "_id": cuisines_dropdown["_id"],
+                "name": cuisines_dropdown["cuisine_name"],
             },
             "directions": directions,
             "uploaded_file_url": uploaded_file_url
@@ -206,7 +212,10 @@ def process_update_recipe(recipe_id):
     })
     print(recipe_id)
     print(ObjectId(recipe_id))
-    return redirect(url_for('board_view', recipe_id=ObjectId(recipe_id)))
+    return redirect(url_for('board_view',
+                    recipe_id=ObjectId(recipe_id),
+                    page=page,
+                    search_terms=search_terms))
 
 
 @ app.route('/recipe/delete/<recipe_id>')
