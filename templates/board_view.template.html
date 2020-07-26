@@ -53,14 +53,29 @@
             </div>
         
 
-            <a class="btn btn-success mb-5" href="{{ url_for('show_all_recipes') }}">Go to list</a>
-            <a class="btn btn-dark mb-5 px-3 float-right ml-2" href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}">Delete</a>
-            <a class="btn btn-info mb-5 px-4 float-right" href="{{ url_for('update_recipe', recipe_id=recipe._id) }}">Edit</a>
-           
-           
+            <a class="btn btn-success" href="{{ url_for('show_all_recipes') }}">Go to list</a>
+            <a class="btn btn-dark px-3 float-right ml-2" href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}">Delete</a>
+            <a class="btn btn-info px-4 float-right" href="{{ url_for('update_recipe', recipe_id=recipe._id) }}">Edit</a>
             
-            
+            <p class="comment h6">Leave a comment below</p>
+        
+            <!--Comments starts-->
+            <div id="disqus_thread"></div>
+            <!--comments ends-->
+           
         </div>
     </div>
 </section>
 {% endblock %}
+
+{%block js%}
+<script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://cookbooks-1.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>                   
+{% endblock %}
+                            
