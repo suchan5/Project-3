@@ -76,7 +76,7 @@
 					<div class="btnPosition">
 						<input type="submit" value="Save" class="btn btn-info mt-5 px-4"/>
 						<a class="btn btn-dark mt-5 px-3"
-							href="{{ url_for('board_view', recipe_id=recipe._id) }}">Cancel</a>
+							href="{{ url_for('board_view', recipe_id=recipe._id, page=page, search_terms=search_terms) }}">Cancel</a>
 					</div>
 			</form>
 		</div>
