@@ -45,7 +45,7 @@ def submit_recipe():
     tot_count = client[DB_NAME].submittedRecipes.find().count()
     # get the last page number
     last_page_num = math.ceil(tot_count / limit)
-
+    
     # assign 'last page num' to 'page'
     page = last_page_num
 
