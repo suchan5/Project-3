@@ -3,15 +3,20 @@
 {% block title %}Delete ｜ {{recipe.title}} {% endblock %}
 
 {%block content%}
-<div class="container">
-    <div class="alert alert-danger">
-        <form method="POST">
-            <p>Are you sure you want to delete {{recipe.title}}?</p>
-            <div>
-                <input type="submit" value="confirm" class="btn btn-info mt-5 mb-5"/>
-                <a class="btn btn-dark mt-5 mb-5" href="{{ url_for('board_view', recipe_id=recipe._id, page=page, search_terms=search_terms) }}">Cancel</a>
+<section class="deletion">
+	<div class="container py-5">
+		<div class="deletionBox">
+
+            <div class="alert alert-danger text-center py-5">
+                <form method="POST">
+                    <p>Are you sure you want to delete {{recipe.title}}?</p>
+                    <div>
+                        <input type="submit" value="confirm" class="btn btn-info mt-5 mb-5"/>
+                        <a class="btn btn-dark mt-5 mb-5" href="{{ url_for('board_view', recipe_id=recipe._id, page=page, search_terms=search_terms) }}">Cancel</a>
+                    </div>
+                </form>
             </div>
-        </form>
+		</div>
     </div>
-</div>
+</section>
 {% endblock %}
