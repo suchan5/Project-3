@@ -119,6 +119,13 @@ a.remove-hyperlink:hover {
 }
 
 
+a.nav-item.nav-link:hover { 
+    color: rgb(34, 146, 68) !important; 
+}
+
+.navbar-light .navbar-nav .nav-link:active {
+    color: purple !important;
+}
 
 
 
