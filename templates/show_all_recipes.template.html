@@ -23,6 +23,67 @@
 
 
             <hr class="mb-5">
+            <p>{{cuisine_name}}</p>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+				<a class="navbar-brand" href="/recipes">All</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a href="/recipes/5f187bbc68fb56bd9233a1ed">American</a>
+						</li>
+						<li class="nav-item">
+							<a href="#">Chinese</a>
+						</li>
+						<li class="nav-item">
+							<a href="#">French</a>
+						</li>
+						<li class="nav-item">
+							<a href="#">Italian</a>
+						</li>
+                        <li class="nav-item">
+							<a href="#">Japanese</a>
+						</li>
+                        <li class="nav-item">
+							<a href="#">Korean</a>
+						</li>
+                        <li class="nav-item">
+							<a href="#">Thailand</a>
+						</li>
+                        <li class="nav-item">
+							<a href="#">Others</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			<div class="row">
 				{% for a in all_recipes %}
 				<div class="col-sm-3 mb-5">
@@ -44,6 +105,8 @@
 				{% endfor %}
 
 			</div>
+
+
             <!--paging starts-->
             <div class="pagination mt-5 mb-2">
                 {% if block_start - 1 > 0 %}

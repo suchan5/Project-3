@@ -6,26 +6,20 @@ import pymongo
 import datetime
 import math
 
-# load in the variable in the .env file into our operating system environment
 load_dotenv()
 
 app = Flask(__name__)
 
-# connect to Mongo
 MONGO_URI = os.environ.get('MONGO_URL')
 client = pymongo.MongoClient(MONGO_URI)
 
-# connect to Cloudinary for uploading files
 CLOUD_NAME = os.environ.get('CLOUD_NAME')
 UPLOAD_PRESET = os.environ.get('UPLOAD_PRESET')
 
-# define my db name
 DB_NAME = "cookbooks"
 
-# read in the SESSION_KEY variable from the operating system environment
 SESSION_KEY = os.environ.get('SESSION_KEY')
 
-# set the session key
 app.secret_key = SESSION_KEY
 
 
@@ -33,20 +27,16 @@ app.secret_key = SESSION_KEY
 def home():
     return render_template('home.template.html')
 
- 
+
 @app.route('/recipe/submit')
 def submit_recipe():
 
-    # get the page number
     page = request.args.get('page', 1, type=int)
-    # how many pages to present
     limit = request.args.get('limit', 12, type=int)
-    # total number of post
     tot_count = client[DB_NAME].submittedRecipes.find().count()
-    # get the last page number
     last_page_num = math.ceil(tot_count / limit)
-    
-    # assign 'last page num' to 'page'
+
+    # assign 'last page num' to 'page' so that when a new recipe created and posted, it can go back to the last page 
     page = last_page_num
 
     all_cuisines = client[DB_NAME].cuisines.find()
@@ -63,13 +53,9 @@ def submit_recipe():
 def process_submit_recipe():
     print(request.form)
 
-    # get the page number
     page = request.args.get('page', 1, type=int)
-    # how many pages to present
     limit = request.args.get('limit', 12, type=int)
-    # total number of post
     tot_count = client[DB_NAME].submittedRecipes.find().count()
-    # get the last page number
     last_page_num = math.ceil(tot_count / limit)
 
     # assign 'last page number' to 'page'
@@ -111,9 +97,7 @@ def process_submit_recipe():
 @app.route('/view/<recipe_id>')
 def board_view(recipe_id):
 
-    # get the page number
     page = request.args.get('page', 1, type=int)
-    # extract out the search term
     search_terms = request.args.get('search-terms')
 
     recipe = client[DB_NAME].submittedRecipes.find_one({
@@ -162,6 +146,7 @@ def show_all_recipes():
 
     all_recipes = client[DB_NAME].submittedRecipes.find(criteria).skip(
         (page-1)*limit).limit(limit)
+
     return render_template('show_all_recipes.template.html',
                            all_recipes=all_recipes,
                            page=page,
@@ -176,9 +161,7 @@ def show_all_recipes():
 @app.route('/recipe/update/<recipe_id>')
 def update_recipe(recipe_id):
 
-    # get the page number
     page = request.args.get('page', 1, type=int)
-    # extract out the search term
     search_terms = request.args.get('search-terms')
 
     recipe = client[DB_NAME].submittedRecipes.find_one({
@@ -199,9 +182,7 @@ def update_recipe(recipe_id):
 def process_update_recipe(recipe_id):
     print(request.form)
 
-    # get the page number
     page = request.args.get('page', 1, type=int)
-    # extract out the search term
     search_terms = request.args.get('search-terms')
 
     recipe_title = request.form.get('recipe-title')
@@ -247,9 +228,8 @@ def process_update_recipe(recipe_id):
 
 @ app.route('/recipe/delete/<recipe_id>')
 def delete_recipe(recipe_id):
-    # get the page number
+
     page = request.args.get('page', 1, type=int)
-    # extract out the search term
     search_terms = request.args.get('search-terms')
 
     recipe = client[DB_NAME].submittedRecipes.find_one({
@@ -265,9 +245,7 @@ def delete_recipe(recipe_id):
 @ app.route('/recipe/delete/<recipe_id>', methods=['POST'])
 def process_delete_recipe(recipe_id):
 
-    # get the page number
     page = request.args.get('page', 1, type=int)
-    # extract out the search term
     search_terms = request.args.get('search-terms')
 
     client[DB_NAME].submittedRecipes.remove({
