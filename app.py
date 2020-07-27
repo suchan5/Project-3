@@ -131,12 +131,12 @@ def show_all_recipes():
     # end location of block
     block_last = math.ceil(block_start + (block_size - 1))
 
+    # dictinery to store all the criteria
+    criteria = {}
+
     # extract out the search term
     search_terms = request.args.get('search-terms')
     print(search_terms)
-
-    # dictinery to store all the criteria
-    criteria = {}
 
     if search_terms != "" and search_terms is not None:
         criteria['title'] = {
@@ -147,6 +147,14 @@ def show_all_recipes():
     all_recipes = client[DB_NAME].submittedRecipes.find(criteria).skip(
         (page-1)*limit).limit(limit)
 
+    cuisine_name = request.args.get('cuisine_name')
+    print(cuisine_name)
+
+    if cuisine_name != "" and cuisine_name is not None:
+        criteria['cuisine.name'] = cuisine_name
+
+    all_cuisines = client[DB_NAME].submittedRecipes.find(criteria)
+
     return render_template('show_all_recipes.template.html',
                            all_recipes=all_recipes,
                            page=page,
@@ -154,7 +162,8 @@ def show_all_recipes():
                            last_page_num=last_page_num,
                            block_start=block_start,
                            block_last=block_last,
-                           search_terms=search_terms
+                           search_terms=search_terms,
+                           all_cuisines=all_cuisines
                            )
 
 
