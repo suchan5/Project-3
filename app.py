@@ -89,6 +89,7 @@ def process_submit_recipe():
         "directions": directions,
         "uploaded_file_url": uploaded_file_url
     })
+    flash(f"'{recipe_title}' posted successfully !")
     return redirect(url_for('board_view',
                     recipe_id=submission.inserted_id,
                     page=page))
@@ -131,10 +132,9 @@ def show_all_recipes():
     # end location of block
     block_last = math.ceil(block_start + (block_size - 1))
 
-    # dictinery to store all the criteria
+    # dictinery to store all the criteria for search function
     criteria = {}
 
-    # extract out the search term
     search_terms = request.args.get('search-terms')
     print(search_terms)
 
@@ -153,7 +153,8 @@ def show_all_recipes():
     if cuisine_name != "" and cuisine_name is not None:
         criteria['cuisine.name'] = cuisine_name
 
-    all_cuisines = client[DB_NAME].submittedRecipes.find(criteria)
+    all_cuisines = client[DB_NAME].submittedRecipes.find(criteria).skip(
+        (page-1)*limit).limit(limit)
 
     return render_template('show_all_recipes.template.html',
                            all_recipes=all_recipes,
@@ -229,6 +230,8 @@ def process_update_recipe(recipe_id):
     })
     print(recipe_id)
     print(ObjectId(recipe_id))
+
+    flash(f"'{recipe_title}' edited successfully !")
     return redirect(url_for('board_view',
                     recipe_id=ObjectId(recipe_id),
                     page=page,
@@ -254,15 +257,11 @@ def delete_recipe(recipe_id):
 @ app.route('/recipe/delete/<recipe_id>', methods=['POST'])
 def process_delete_recipe(recipe_id):
 
-    page = request.args.get('page', 1, type=int)
-    search_terms = request.args.get('search-terms')
-
     client[DB_NAME].submittedRecipes.remove({
         "_id": ObjectId(recipe_id)
     })
-    return redirect(url_for('show_all_recipes',
-                    page=page,
-                    search_terms=search_terms))
+    flash("Post deleted successfully !")
+    return redirect(url_for('show_all_recipes'))
 
 
 # "magic code" -- boilerplate

@@ -1,4 +1,3 @@
-
 /* 'Submissiont' page, 'Edit' page, 'View all recipes' page */
 .masthead, .submission, .boardview, .allRecipes, .deletion {
     background-image: url('/static/img/brocoli.png');
@@ -21,13 +20,6 @@ div.mastheadBox, div.submitBox, div.boardviewBox, div.allRecipesBox, div.deletio
 .pageBorder {
     border: solid 1px rgb(101, 46, 148);
     padding: 5%;
-    margin-bottom: 5%;
-}
-
-
-#no-pageBorder {
-    border: solid 1px rgb(101, 46, 148);
-    padding: 0%;
     margin-bottom: 5%;
 }
 
@@ -80,7 +72,7 @@ div#previewImg_div img, .submission #uploaded-image {
     border: solid 1px rgba(100, 46, 148, 0);
     padding: 0%;
     margin-bottom: 5%;
-}
+    }
 }
 
 
@@ -130,14 +122,14 @@ a.remove-hyperlink:hover {
 }
 
 .allRecipes img.card-img-top {
-    object-fit: contain;
+    object-fit: cover;
     width: 100%;
-    height: 50px;
+    height: 150px;
 }
 
 .text-overflow {
     overflow: hidden;
-    text-overflow: clip;
+    text-overflow: ellipsis;
     white-space: nowrap;
 }
 
@@ -177,15 +169,25 @@ a.nav-item.nav-link:hover {
     color: purple !important;
 }
 
+.textTitle {
+    text-align: right;
+}
+
+@media screen and (max-width: 580px) { 
+    .textTitle {
+        text-align: center;
+        margin-top: 25px;
+    }
+}
 
 
 
-
-
-/* Comments footer to be not shown*/
+/* Comments box's copyright shown in the footer to be not shown*/
 #disqus_thread {
   position: relative;
+  border-bottom: solid 2px purple;
 }
+
 #disqus_thread:after {
   content: "";
   display: block;
