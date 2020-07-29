@@ -48,7 +48,7 @@
 				{% for a in all_recipes %}
 				<div class="col-sm-3 mb-5">
 					<div class="card h-100 shadow mb-4" id="cardEffect">
-						<a href="{{ url_for('board_view', recipe_id=a._id, page=page, search_terms=search_terms) }}" class="remove-hyperlink">
+						<a href="{{ url_for('board_view', recipe_id=a._id, page=page, search_terms=search_terms, cuisine_name=cuisine_name) }}" class="remove-hyperlink">
 
 							{% if a.uploaded_file_url %}
 							<img class="card-img-top" src="{{a.uploaded_file_url}}" alt="Recipe Image">
@@ -70,7 +70,7 @@
             <!--paging starts-->
             <div class="pagination mt-5 mb-2">
                 {% if block_start - 1 > 0 %}
-                    <a href="{{url_for('show_all_recipes', page=block_start-1, search_terms=search_terms)}}" class="px-2">&laquo;</a>
+                    <a href="{{url_for('show_all_recipes', page=block_start-1, search_terms=search_terms, cuisine_name=cuisine_name)}}" class="px-2">&laquo;</a>
                 {% endif %}
 
 
@@ -81,13 +81,13 @@
                         {% if i == page %}
                             <b>{{i}}</b>
                         {% else %}
-                            <a href="{{url_for('show_all_recipes', page=i, search_terms=search_terms)}}" class="px-2 activePage">{{i}}</a>
+                            <a href="{{url_for('show_all_recipes', page=i, search_terms=search_terms, cuisine_name=cuisine_name)}}" class="px-2 activePage">{{i}}</a>
                         {% endif %}
                     {% endif %}
                 {% endfor %}
 
                 {% if block_last < last_page_num %}
-                    <a href="{{url_for('show_all_recipes', page=block_last+ 1, search_terms=search_terms)}}" class="px-2">&raquo;</a>
+                    <a href="{{url_for('show_all_recipes', page=block_last+ 1, search_terms=search_terms, cuisine_name=cuisine_name)}}" class="px-2">&raquo;</a>
                 {% endif %}
             </div>
             <!--paging ends-->

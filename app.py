@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 import os
 from dotenv import load_dotenv
 from bson import ObjectId
-import pymongo 
+import pymongo
 import math
 
 load_dotenv()
@@ -29,6 +29,7 @@ def home():
 
 @app.route('/recipe/submit')
 def submit_recipe():
+
     all_cuisines = client[DB_NAME].cuisines.find()
 
     return render_template('submit_recipe.template.html',
@@ -79,6 +80,7 @@ def board_view(recipe_id):
 
     page = request.args.get('page', 1, type=int)
     search_terms = request.args.get('search-terms')
+    cuisine_name = request.args.get('cuisine_name')
 
     recipe = client[DB_NAME].submittedRecipes.find_one({
         "_id": ObjectId(recipe_id)
@@ -86,7 +88,8 @@ def board_view(recipe_id):
     return render_template('board_view.template.html',
                            recipe=recipe,
                            page=page,
-                           search_terms=search_terms
+                           search_terms=search_terms,
+                           cuisine_name=cuisine_name
                            )
 
 
@@ -123,16 +126,13 @@ def show_all_recipes():
             "$options": "i"
         }
 
-    all_recipes = client[DB_NAME].submittedRecipes.find(criteria).skip(
-        (page-1)*limit).limit(limit)
-
     cuisine_name = request.args.get('cuisine_name')
     print(cuisine_name)
 
     if cuisine_name != "" and cuisine_name is not None:
         criteria['cuisine.name'] = cuisine_name
 
-    all_cuisines = client[DB_NAME].submittedRecipes.find(criteria).skip(
+    all_recipes = client[DB_NAME].submittedRecipes.find(criteria).skip(
         (page-1)*limit).limit(limit)
 
     return render_template('show_all_recipes.template.html',
@@ -143,7 +143,7 @@ def show_all_recipes():
                            block_start=block_start,
                            block_last=block_last,
                            search_terms=search_terms,
-                           all_cuisines=all_cuisines
+                           cuisine_name=cuisine_name
                            )
 
 
@@ -152,6 +152,7 @@ def update_recipe(recipe_id):
 
     page = request.args.get('page', 1, type=int)
     search_terms = request.args.get('search-terms')
+    cuisine_name = request.args.get('cuisine_name')
 
     recipe = client[DB_NAME].submittedRecipes.find_one({
         "_id": ObjectId(recipe_id)
@@ -163,7 +164,8 @@ def update_recipe(recipe_id):
                            upload_preset=UPLOAD_PRESET,
                            all_cuisines=all_cuisines,
                            page=page,
-                           search_terms=search_terms
+                           search_terms=search_terms,
+                           cuisine_name=cuisine_name
                            )
 
 
@@ -173,6 +175,7 @@ def process_update_recipe(recipe_id):
 
     page = request.args.get('page', 1, type=int)
     search_terms = request.args.get('search-terms')
+    cuisine_name = request.args.get('cuisine_name')
 
     recipe_title = request.form.get('recipe-title')
     about_recipe = request.form.get('about-recipe')
@@ -214,7 +217,8 @@ def process_update_recipe(recipe_id):
     return redirect(url_for('board_view',
                     recipe_id=ObjectId(recipe_id),
                     page=page,
-                    search_terms=search_terms))
+                    search_terms=search_terms,
+                    cuisine_name=cuisine_name))
 
 
 @ app.route('/recipe/delete/<recipe_id>')
@@ -222,6 +226,7 @@ def delete_recipe(recipe_id):
 
     page = request.args.get('page', 1, type=int)
     search_terms = request.args.get('search-terms')
+    cuisine_name = request.args.get('cuisine_name')
 
     recipe = client[DB_NAME].submittedRecipes.find_one({
         "_id": ObjectId(recipe_id)
@@ -229,18 +234,26 @@ def delete_recipe(recipe_id):
     return render_template('confirm_to_delete.template.html',
                            recipe=recipe,
                            page=page,
-                           search_terms=search_terms
+                           search_terms=search_terms,
+                           cuisine_name=cuisine_name
                            )
 
 
 @ app.route('/recipe/delete/<recipe_id>', methods=['POST'])
 def process_delete_recipe(recipe_id):
 
+    page = request.args.get('page', 1, type=int)
+    search_terms = request.args.get('search-terms')
+    cuisine_name = request.args.get('cuisine_name')
+
     client[DB_NAME].submittedRecipes.remove({
         "_id": ObjectId(recipe_id)
     })
     flash("Post deleted successfully !")
-    return redirect(url_for('show_all_recipes'))
+    return redirect(url_for('show_all_recipes',
+            page=page,
+            search_terms=search_terms,
+            cuisine_name=cuisine_name))
 
 
 # "magic code" -- boilerplate
