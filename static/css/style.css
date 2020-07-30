@@ -6,7 +6,7 @@
     background-position: bottom;  
 }
 
-div.mastheadBox, div.submitBox, div.boardviewBox, div.allRecipesBox, div.deletionBox {
+div.submitBox, div.boardviewBox, div.allRecipesBox, div.deletionBox {
     border-radius: 4px;
     background-color: rgba(248, 248, 245, 0.808);
     padding-left: 3rem;
@@ -14,7 +14,18 @@ div.mastheadBox, div.submitBox, div.boardviewBox, div.allRecipesBox, div.deletio
     padding-bottom: 5rem;
     padding-top: 5rem;
     margin-top: 5rem;
-    margin-bottom: 5rem;
+    margin-bottom: 10rem;
+}
+
+div.mastheadBox {
+    border-radius: 4px;
+    background-color: rgba(248, 248, 245, 0.808);
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-bottom: 5rem;
+    padding-top: 5rem;
+    margin-top: 5rem;
+    margin-bottom: 10rem;
 }
 
 .pageBorder {
@@ -59,7 +70,7 @@ div#previewImg_div img, .submission #uploaded-image {
     text-decoration: none;
 }
 
-
+ 
 
 /* Submission Page */
 @media screen and (max-width: 760px) {    
@@ -75,6 +86,13 @@ div#previewImg_div img, .submission #uploaded-image {
     }
 }
 
+
+@media screen and (max-width: 800px) {
+    .boardview h2 {
+        text-align: center;
+    }
+
+}
 
 /* Alll the button sizes to be responsive*/
 @media screen and (max-width: 330px) {    
