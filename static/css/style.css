@@ -1,4 +1,4 @@
-/* 'Submissiont' page, 'Edit' page, 'View all recipes' page */
+/* To give design effect across templates */
 .masthead, .submission, .boardview, .allRecipes, .deletion {
     background-image: url('/static/img/brocoli.png');
     background-size: contain;
@@ -46,6 +46,8 @@ div#previewImg_div img, .submission #uploaded-image {
 
 
 
+
+
 /* 'Home' page */
 .homeBox {
     padding-top: 0;
@@ -72,7 +74,9 @@ div#previewImg_div img, .submission #uploaded-image {
 
  
 
-/* Submission Page */
+
+
+/* Mobile responsiveness for 'Submission' Page */
 @media screen and (max-width: 760px) {    
     .btn-warning {
         display: flex;
@@ -86,7 +90,6 @@ div#previewImg_div img, .submission #uploaded-image {
     }
 }
 
-
 @media screen and (max-width: 800px) {
     .boardview h2 {
         text-align: center;
@@ -94,7 +97,11 @@ div#previewImg_div img, .submission #uploaded-image {
 
 }
 
-/* Alll the button sizes to be responsive*/
+
+
+
+
+/* Alll the button sizes across templates to be responsive*/
 @media screen and (max-width: 330px) {    
     .btn-info {
        width: 45%;
@@ -116,9 +123,6 @@ div#previewImg_div img, .submission #uploaded-image {
     }
 
 }
-
-
-
 
 
 
@@ -178,7 +182,6 @@ a.remove-hyperlink:hover {
     background-color: #ddd;
 }
 
-
 a.nav-item.nav-link:hover { 
     color: rgb(34, 146, 68) !important; 
 }
@@ -200,7 +203,9 @@ a.nav-item.nav-link:hover {
 
 
 
-/* Comments box's copyright shown in the footer to be not shown*/
+
+
+/* To hide the copyright of DISCUS indicated in the footer, for better design purpose */
 #disqus_thread {
   position: relative;
   border-bottom: solid 2px purple;
@@ -222,7 +227,6 @@ p.comment {
     border-bottom: solid 2px purple;
     padding-bottom: 0.5rem;
 }
-
 
 
 

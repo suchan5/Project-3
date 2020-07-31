@@ -250,14 +250,13 @@ def process_delete_recipe(recipe_id):
         "_id": ObjectId(recipe_id)
     })
     flash("Post deleted successfully !")
-    return redirect(url_for('show_all_recipes',
-            page=page,
-            search_terms=search_terms,
-            cuisine_name=cuisine_name))
+    return redirect(url_for('show_all_recipes', page=page,
+                    search_terms=search_terms,
+                    cuisine_name=cuisine_name))
 
 
 # "magic code" -- boilerplate
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
-            debug=True)
+            debug=False)

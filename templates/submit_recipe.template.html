@@ -83,19 +83,21 @@
             uploadPreset: '{{upload_preset}}'}, (error, result) => { 
                 if (!error && result && result.event === "success") { 
                     console.log('Done! Here is the image info: ', result.info);
-                    let fileURL = document.querySelector('#uploaded_file_url');
+                    var fileURL = document.querySelector('#uploaded_file_url');
                     fileURL.value = result.info.url;
 
                     // To show a preview of the image which is going to be uploaded
-                    console.log(result.info.thumbnail_url)
+                    console.log(result.info.thumbnail_url);
                     $('#previewImg_div').append(`<img src="${result.info.url}"/><br>`);
 
                     // The uploaded file name to be shown upon uploading successfully
-                    let filenameDisplay = document.querySelector('#uploaded_file_display');
+                    var filenameDisplay = document.querySelector('#uploaded_file_display');
+
                     //make it appear by setting it to display 'block'
                     filenameDisplay.style.display = 'block';
+                    
                     // fill in the uploaded file name
-                    let filenameDisplaySpan = document.querySelector("#uploaded_file_name");
+                    var filenameDisplaySpan = document.querySelector("#uploaded_file_name");
                     filenameDisplaySpan.innerText = result.info.original_filename;
         }
     }

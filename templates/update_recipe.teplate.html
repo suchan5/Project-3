@@ -61,7 +61,7 @@
 						</div>
 
                         {% if recipe.uploaded_file_url %}
-                        <img src="{{recipe.uploaded_file_url}}" id="uploaded-image" class="card-img-top"/>
+                        <img src="{{recipe.uploaded_file_url}}" id="uploaded-image" class="card-img-top" alt="uploaded-image"/>
                         <br>
                         {% endif %}
                         
@@ -93,15 +93,17 @@
             uploadPreset: '{{upload_preset}}'}, (error, result) => { 
                 if (!error && result && result.event === "success") { 
                     console.log('Done! Here is the image info: ', result.info);
-                    let fileURL = document.querySelector('#uploaded_file_url');
+                    var fileURL = document.querySelector('#uploaded_file_url');
                     fileURL.value = result.info.url;
 
                     // The uploaded file name to be shown upon uploading successfully
-                    let filenameDisplay = document.querySelector('#uploaded_file_display');
+                    var filenameDisplay = document.querySelector('#uploaded_file_display');
+
                     //make it appear by setting it to display 'block'
                     filenameDisplay.style.display = 'block';
+                    
                     // fill in the uploaded file name
-                    let filenameDisplaySpan = document.querySelector("#uploaded_file_name");
+                    var filenameDisplaySpan = document.querySelector("#uploaded_file_name");
                     filenameDisplaySpan.innerText = result.info.original_filename;
 
                     // replace to the edited image 
