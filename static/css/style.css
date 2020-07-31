@@ -45,9 +45,6 @@ div#previewImg_div img, .submission #uploaded-image {
 }
 
 
-
-
-
 /* 'Home' page */
 .homeBox {
     padding-top: 0;
@@ -73,9 +70,6 @@ div#previewImg_div img, .submission #uploaded-image {
 }
 
  
-
-
-
 /* Mobile responsiveness for 'Submission' Page */
 @media screen and (max-width: 760px) {    
     .btn-warning {
@@ -96,9 +90,6 @@ div#previewImg_div img, .submission #uploaded-image {
     }
 
 }
-
-
-
 
 
 /* Alll the button sizes across templates to be responsive*/
@@ -123,9 +114,6 @@ div#previewImg_div img, .submission #uploaded-image {
     }
 
 }
-
-
-
 
 
 /* 'Show all recipes' page*/
@@ -202,9 +190,6 @@ a.nav-item.nav-link:hover {
 }
 
 
-
-
-
 /* To hide the copyright of DISCUS indicated in the footer, for better design purpose */
 #disqus_thread {
   position: relative;
@@ -227,9 +212,6 @@ p.comment {
     border-bottom: solid 2px purple;
     padding-bottom: 0.5rem;
 }
-
-
-
 
 
 /* footer */
