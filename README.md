@@ -136,7 +136,7 @@ The main purpose of the test on the responsive design is to ensure that the webs
 ![screenshot of Cookbook run on 'Am I Responsive' website](static/img/amIresponsive.png)
 
 # Codes I could not achieve : Pagination upon searching and upon filtering by cuisines
-![search function error](static/img/search error.png)
+![search function error](static/img/search_error.png)
 When I search for a recipe, for example 'tofu', and there is only one result, it is supposed to show page 1 only. However, the pagination is not functioning as intended where it still shows all the pages. Page 1 succesfully displays the search results as desired, but the other pages also appear regardless of the search results. Also when it was filetered by cuisines, same problem is detected.
 
 As an attempt to solve the problem, I have tried to include the variables, 'search terms' and 'cuisine names', in href of pagination code so that it can be passed as parameters in query string. However it did not work. 
