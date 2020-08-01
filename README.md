@@ -24,9 +24,38 @@ Users can also view all the other recipes submitted by other users and can freel
 * [Cloudinary](https://cloudinary.com/) - it was used for image uploading function
 * [DISQUS](https) - it was used for commenting function
 
-# Structure
-[Wireframe](#)
-#### Each pages are interactive and intuitive which makes it easier for users to explore the contents through==out the website.
+# Data Structure
+![Dara Structure](static/img/ERD.png)
+Data structure of Cookbooks consists of two collections which are 'submittedRecipes' and 'cuisines'.
+#### When users add new recipes to the site, the data will be stored in the collection, 'submittedRecipes'. It includes fields such as:
+- Title of the recipe
+- About the recipe (short introduction about the recipe)
+- Ingredients
+- Prep time
+- Cook time
+- Servings
+- Cuisine
+- Direction
+- Uploaded image
+
+#### A separate collection named 'cuisines' is created to store data of cuisine types so that it enables the users to search recipes easily with filtering by cuisine types:
+- American
+- Chinese
+- French
+- Italian
+- Japanese
+- Korean
+- Thailand
+- Others
+
+
+
+
+
+
+# Structure of the website
+[Wireframe](https://ovenapp.io/view/tl64LcZeN7PnZqOJiHJPfUW862T6BoNZ/gAYR6)
+#### Each pages are interactive and intuitive which makes it easier for users to explore the contents throughout the website.
 * 'Home' page is the first page the users see when they access the domain address. A big logo of the website is located in the centre with the two big buttons ('Submit a Recipe' and 'View Recipes') which gives the users a direct idea of what this website is built for.
 * 'Submit a Recipe' page consists of a submission form. Users can fill up the blank with relevant information such as ingredients to share their recipes. Also, images can be uploaded if they want to.
 * 'Board View' page is where users can view the recipe they have just submitted. Once submitted, the board view appears for users to check and view the recipe they have just created.
@@ -58,11 +87,11 @@ This website is created with a focus on UI/UX that is:
 - Navbar shows the two main functions (Submit and View) so that the user can create or read their recipes anytime.
 - Navbar is accessible from every page.
 
-#### Giving guidance:
+#### Giving guidance :
 - Upon creating, editing and deleting of the recipes, a flash message appears to indicate that the action is performed succesfully (Flash messages disappear after some time).
 - Placeholders give users an idea what to fill in the blanks in the submission form.
 
-#### Preview of images:
+#### Preview of images :
 - When submitting or updating the recipe, users can view the preview of the images that they are going to post or edit.
 - Users can also view the name of the uploaded file before submitting to ensure that it is the correct file which they intend to post.
 
@@ -71,29 +100,35 @@ This website is created with a focus on UI/UX that is:
 - Users can use search terms irrelevant to the upper case or lower case.
 - Results will be shown for both scenarios where the search term is in full or in partial strings.
 
-#### View by categories:
+#### View by categories :
 - Users can view all the available recipes in the website by cuisines.
 
 #### Recipes can be enlarged :
-- For 'View Recipes' page, all the recipes which are displayed in the form of cards are enlarged upon mouseover for easier readability.
+- For 'View Recipes' page, all the recipes which are displayed in the form of cards are enlarged upon mouseover to give users a better interactive experiences.
 
-#### Button colours
+#### Button colours :
 - Button colours change on mouseover.
-- Different colors are assigned to the function buttons consistently throughout the website
-The function buttons are differentiated by colour which is applied consistently throughout the website.
+- The function buttons are differentiated by colour which is applied consistently throughout the website.
 (e.g. 'Save' buttons across templates are in blue, 'Cancel' buttons across templates are in black.)
 
-#### Mouse cursor changes to pointer on click-able buttons on 'Home' page
+#### Mouse cursor changes to pointer on click-able buttons
 
-#### Commenting function added
+#### Commenting function added :
 - Users can freely leave a comment on the recipe to share opinions with other users (acheived by using DISQUS).
 
-#### Redirect:
-- Users are redirected to the same page where they left off. For example, when a user views a recipe from page 2 and clicks 'go to list', he/she will be redirected back to page 2.
-
-#### Pagination:
+#### Pagination :
 - For 'View Recipes' page, each page is designed to display 12 cards (4 by 3 per page). When cards exceed twelve, it will automatically create a new next page. 
 - Each block contains 5 pages. When pages exceed five, users can simply click the 'Next' button to view the next block.
+
+#### Redirect :
+- Users are redirected to the same page where they left off. For example, for a recipe in page 2 of pagination, after the user views it in detail and clicks the ‘go to list’ button, he/she will be redirected back to page 2.
+
+
+## Features left to be implemented
+- My search engine is an independent search engine which searches for recipes with search terms only. However in future, I would like combine search terms with filter by cuisines to make it more advanced.
+- I want to implement WYSIWYG editor such as Summernote to replace <textarea> tag used in submission form. Currnet issue with uploading images is also expected to be resolved by using it.
+
+
 
 # Responsive Design
 The main purpose of the test on the responsive design is to ensure that the website works well and looks  organized in different media sizes. It was acheived by using Bootstrap, media query, and 'Inspect' function from Google Chrome.
@@ -101,21 +136,60 @@ The main purpose of the test on the responsive design is to ensure that the webs
 ![screenshot of Cookbook run on 'Am I Responsive' website](static/img/amIresponsive.png)
 
 # Codes I could not achieve : Pagination upon searching and upon filtering by cuisines
+![search function error](static/img/search error.png)
 When I search for a recipe, for example 'tofu', and there is only one result, it is supposed to show page 1 only. However, the pagination is not functioning as intended where it still shows all the pages. Page 1 succesfully displays the search results as desired, but the other pages also appear regardless of the search results. Also when it was filetered by cuisines, same problem is detected.
 
-As an attempt to solve the problem, I have tried to include the variables, 'search terms' and 'cuisine names', in <a> tag so that it can be passed as parameters in query string.
+As an attempt to solve the problem, I have tried to include the variables, 'search terms' and 'cuisine names', in href of pagination code so that it can be passed as parameters in query string. However it did not work. 
 ```html
 <a href="{{url_for('show_all_recipes', page=i, search_terms=search_terms, cuisine_name=cuisine_name)}}" class="px-2 activePage">{{i}}</a>
 ```
-However it did not work. 
 
 
 # Deployment 
-Cookbooks is deployed using a cloud based hosing platform, Heroku.
+CookBooks is coded and developed in Gitpod, and deployed using a cloud based hosing platform, Heroku.
 
-#### Errors & differences detected 
-There is an error detected which does not occur in Gitpod.
-###### Cloudinary is not working for uploading images.
+1. Sign up to Heroku account and login to Heroku using the terminal in Gitpod
+```html
+heroku login
+```
+2. Create the app name I am going to use. It must be unique and must avoid underscore
+```html
+heroku create <app name>
+```
+3. When a new remotes added, check it with the following :
+```html
+git remote -v
+```
+4. Install gunicorn
+```html
+pip3 install gunicorn
+```
+5. Create a file named "Procfile" (the P must be a capital letter)
+
+6. Open 'Profile' in the editor and add the below :
+```html
+web gunicorn <my python file name without .py>:app
+```
+My python file name is 'app.py' so it should be as below:
+```html
+web gunicorn app:app
+```
+7. Create requirements file by using the terminal
+```html
+pip3 freeze --local > requirements.txt
+```
+8. Add, commit and push the changes 
+```html
+git add .
+git commit -m "<my commit message>"
+git push heroku master
+```
+9. Open the app from Heroku website or access via URL created : https://cookbooks-recipes.herokuapp.com/
+
+
+
+#### Errors & differences detected after deployment
+There is an error detected which did not occur when tested in Gitpod : Cloudinary is not working for uploading images.
 
 ![Cloudinary error](static/img/cloudinary_error.png)
 
@@ -144,12 +218,13 @@ document.getElementById("upload_widget").addEventListener("click", function(){
 The issue still remains unresolved.
 
 # Testing
+#### Testing Purpose
 * To ensure that there are no broken images or links.
 * To ensure that the website is responsive on different devices.
 * To ensure that the website runs well on different browsers.
 
 I sent the deployed URL to friends and family to test whether the website works responsively without broken images or links in different screen sizes. Also, testing was done on different browsers to ensure that the website runs well.
-##### Devices tested 
+#### Devices tested 
 * Oppo R11
 * iPhone XR
 * iPhone 6S
@@ -159,25 +234,24 @@ I sent the deployed URL to friends and family to test whether the website works 
 * iPad Air 3rd Gen 
 * HanSung Computer Ultron 2454C
 
-##### Browsers tested 
+#### Browsers tested 
 * Google Chrome 
 * Safari 
 * Firefox 
 * Internet Exporer 
 
-##### No error detected. Testing results are as expected.
+##### No error detected, except Cloudinary error. Testing results are as expected.
 
 
 
 ## Credit
 
 #### Images
-* [Flaticon](https://www.flaticon.com/free-icon/) - for the emoticons used in navbar and logo
+* [Flaticon](https://www.flaticon.com/free-icon/) - for the icons used in navbar and logo
 * [ac-illust](https://ac-illust.com/ko/) - for the broccoli image used in background
 
 #### Recipes
 * [Kim's Cravings](https://www.kimscravings.com/)
-* [Google Image](https://www.google.com/search?q=%ED%81%B4%EB%9E%A8+%EC%B0%A8%EC%9A%B0%EB%8D%94+%EB%A7%8C%EB%93%A4%EA%B8%B0&tbm=isch&ved=2ahUKEwjVl5mejtXqAhWbnksFHbsKAjcQ2-cCegQIABAA&oq=%ED%81%B4%EB%9E%A8+%EC%B0%A8%EC%9A%B0%EB%8D%94+%EB%A7%8C%EB%93%A4%EA%B8%B0&gs_lcp=CgNpbWcQAzoECCMQJzoCCAA6BggAEAUQHjoHCCMQ6gIQJzoECAAQGDoECAAQHlDI0gFYnvkBYNL6AWgHcAB4AIABkAGIAZgKkgEEMzAuMZgBAKABAaoBC2d3cy13aXotaW1nsAEKwAEB&sclient=img&ei=FAgSX9W9DJu9rtoPu5WIuAM&bih=821&biw=1440&rlz=1C5CHFA_enSG893SG895#imgrc=A50LdUlQ4naizM)
 * [Xiachufang](https://www.xiachufang.com/)
 * [Good Chef Bad Chef](https://www.goodchefbadchef.com.au/)
 * [California Avocado](https://www.californiaavocado.com/recipes/recipe-container/california-avocado-chicken-burrito)
@@ -190,7 +264,10 @@ I sent the deployed URL to friends and family to test whether the website works 
 
 
 #### Ackowledgement
-* [W3schools](https://www.w3schools.com/css/css3_buttons.asp) - for the 'Submit a Recipe' and 'All Recipes' buttons used in 'Home' page
+* [W3schools](https://www.w3schools.com/css/css3_buttons.asp) - for 'Submit a Recipe' and 'All Recipes' buttons used in 'Home' page
 * [W3schools](https://www.w3schools.com/css/tryit.asp?filename=trycss_ex_pagination_transition) - for the CSS design effects used in pagination
 * [Inflearn](https://www.inflearn.com/) - for the reference tutorial for pagination
-* [Yahya Elharony](https://www.elharony.com/remove-disqus-footer-also-on-sections-using-css/#:~:text=How%20to%20remove%20Disqus%20Footer,uncheck%20it%20if%20you%20want.) - for the CSS design effects to make footer of DISQUS not shown
+* [Yahya Elharony](https://www.elharony.com/remove-disqus-footer-also-on-sections-using-css/#:~:text=How%20to%20remove%20Disqus%20Footer,uncheck%20it%20if%20you%20want.) - for the CSS design effects to make footer of DISQUS to be not shown
+
+## Disclaimer
+This website is created for educational purpose only.
