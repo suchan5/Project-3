@@ -17,12 +17,12 @@ Users can also view all the other recipes submitted by other users and can freel
 * CSS3 - It was used to give design effects and style to the website. Also, media query was used for responsive design purpose.
 * JavaScript - It was used to make the website more dynamic and interactive.
 * Python + Flask - Python was used to build the database-backed Flask web application.
-* [MongoDB](https://www.mongodb.com) - non-relational database, MongoDB, was used for designing a database structure, and data was stored in MongoDB Atlas (Cloud)
-* [jQuery 3.5.0](https://jquery.com) - it was used to make it easier to use JavaScript.
-* [Bootstrap 4.4](https://getbootstrap.com) - it was used for structure and style for the website with responsive design for different media sizes.
-* [Font Awesome](https://fontawesome.com) - it was used for concise and intuitive design effect with using icons.
-* [Cloudinary](https://cloudinary.com/) - it was used for image uploading function
-* [DISQUS](https) - it was used for commenting function
+* [MongoDB](https://www.mongodb.com) - Non-relational database, MongoDB, was used for designing a database structure, and data was stored in MongoDB Atlas (Cloud)
+* [jQuery 3.5.0](https://jquery.com) - It was used to make it easier to use JavaScript.
+* [Bootstrap 4.4](https://getbootstrap.com) - It was used for structure and style for the website with responsive design for different media sizes.
+* [Font Awesome](https://fontawesome.com) - It was used for concise and intuitive design effect with using icons.
+* [Cloudinary](https://cloudinary.com/) - It was used for image uploading function
+* [DISQUS](https) - It was used for commenting function
 
 # Data Structure
 ![Dara Structure](static/img/ERD.png)
@@ -57,10 +57,10 @@ Data structure of Cookbooks consists of two collections which are 'submittedReci
 [Wireframe](https://ovenapp.io/view/tl64LcZeN7PnZqOJiHJPfUW862T6BoNZ/gAYR6)
 #### Each pages are interactive and intuitive which makes it easier for users to explore the contents throughout the website.
 * 'Home' page is the first page the users see when they access the domain address. A big logo of the website is located in the centre with the two big buttons ('Submit a Recipe' and 'View Recipes') which gives the users a direct idea of what this website is built for.
-* 'Submit a Recipe' page consists of a submission form. Users can fill up the blank with relevant information such as ingredients to share their recipes. Also, images can be uploaded if they want to.
-* 'Board View' page is where users can view the recipe they have just submitted. Once submitted, the board view appears for users to check and view the recipe they have just created.
-* 'Edit' page is where users can edit or update the recipes. No authentication required. Anyone can access a recipe simply by clicking the recipe and also can click the edit button to update the selected recipe.
-* 'Delete' page is where users can delete the recipes. Clicking the delete button leads to a confirmation alert page which prompts the users if they want to proceed with the deletion.
+* 'Submit a Recipe' page (CREATE) consists of a submission form. Users can fill up the blank with relevant information such as ingredients to share their recipes. Also, images can be uploaded if they want to.
+* 'Board View' page (READ) is where users can view the recipe they have just submitted. Once submitted, the board view appears for users to check and view the recipe they have just created.
+* 'Edit' page (UPDATE) is where users can edit or update the recipes. No authentication required. Anyone can access a recipe simply by clicking the recipe and also can click the edit button to update the selected recipe.
+* 'Delete' page (DELETE) is where users can delete the recipes. Clicking the delete button leads to a confirmation alert page which prompts the users if they want to proceed with the deletion.
 * 'View Recipes' page shows all recipes available in the website. Users can search any recipes with search terms or can view recipes by cuisines.
 
 
@@ -126,7 +126,7 @@ This website is created with a focus on UI/UX that is:
 
 ## Features left to be implemented
 - My current search engine searches through all the recipes by search terms. Alternatively, users can view the recipes by different cuisine types. For a more advanced search in future, I would like to combine these two functions whereby the results can be filtered by a search term within a type of cuisine.
-- I would like to want to implement WYSIWYG editor such as Summernote to replace <textarea> tag used in the submission form. Current issue with uploading images is also expected to be resolved with it.
+- I would like to implement WYSIWYG editor such as Summernote to replace <textarea> tag used in the submission form.
 
 
 
@@ -135,7 +135,7 @@ The main purpose of the test on the responsive design is to ensure that the webs
 
 ![screenshot of Cookbook run on 'Am I Responsive' website](static/img/amIresponsive.png)
 
-# Codes I could not achieve : Pagination upon searching or upon viewing by cuisines
+# Codes I could not achieve : Pagination upon searching/viewing by cuisines
 ![search function error](static/img/search_error.png)
 When I search for a recipe, for example 'tofu', and there is only one result, it is supposed to show page 1 only. However, the pagination is not functioning as intended where it still shows all the pages. Page 1 succesfully displays the search results as desired, but the other pages also appear regardless of the search results. Also when it was viewed by cuisines, same problem is detected.
 
